@@ -1,0 +1,15 @@
+av==12.3.0
+aws-lambda-powertools==2.40.1
+boto3==1.38.8
+botocore==1.38.8
+build==0.10.0
+docker==7.1.0
+fastapi==0.111.0
+httpx==0.23.2
+logtail-python==0.3.0
+pillow==10.4.0
+pydub==0.25.1
+PyJWT[crypto]==2.7.0
+requests==2.31.0
+setuptools==67.6.0
+uvicorn[standard]==0.30.1
