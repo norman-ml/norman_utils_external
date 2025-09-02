@@ -38,6 +38,7 @@ class StreamingUtils:
             if chunk is None or len(chunk) == 0:
                 break
             processed = processor(chunk)
+
             if yield_processed:
                 yield processed
             else:
