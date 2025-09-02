@@ -1,11 +1,14 @@
-from typing import Union, Iterable, AsyncIterable, TypeVar, Callable, AsyncGenerator, Protocol
+import asyncio
+from typing import Union, Iterable, AsyncIterable, TypeVar, Callable, AsyncGenerator, Protocol, Any, Literal, overload
 
 T = TypeVar('T')
-Processor = Union[Callable[[bytes], None], Callable[[bytes], T]]
-
+Processor = Union[Callable[[bytes], Any], Callable[[bytes], T]]
 
 class AsyncBufferedReader(Protocol):
     async def read(self, chunk_size: int) -> bytes: ...
+
+class BufferedReader(Protocol):
+    def read(self, chunk_size: int) -> bytes: ...
 
 
 class StreamingUtils:
@@ -21,14 +24,21 @@ class StreamingUtils:
 
     @staticmethod
     async def process_read_stream(
-            file_stream: AsyncBufferedReader,
+            file_stream: Union[AsyncBufferedReader, BufferedReader] ,
             processor: Processor[T],
             chunk_size: int,
-            return_processed: bool = False
+            yield_processed: bool = True
     ) -> AsyncGenerator[Union[bytes, T], None]:
         while True:
-            chunk = await file_stream.read(chunk_size)
-            if not chunk:
+            if asyncio.iscoroutinefunction(file_stream.read):
+                chunk = await file_stream.read(chunk_size)
+            else:
+                chunk = file_stream.read(chunk_size)
+
+            if chunk is None or len(chunk) == 0:
                 break
             processed = processor(chunk)
-            yield processed if return_processed else chunk
+            if yield_processed:
+                yield processed
+            else:
+                yield chunk
