@@ -7,12 +7,14 @@ name = "norman-base-utils"
 description = "norman base utils common classes"
 version = "0.0.1"
 authors = [
-    {name = "Yonatan Alon", email = "yonatankarimish@gmail.com"},
+    {name = "Norman Artificial Intelligence LTD", email = "yonatan.alon@norman-ai.com"},
 ]
 
 requires-python = ">=3.9"
-license = {text = "proprietary"}
-dependencies = []
+license = {text = "Apache-2.0"}
+dependencies = [
+    "cryptography==45.0.7"
+]
 
 [tools.setuptools]
 packages = ["norman_base_utils"]
