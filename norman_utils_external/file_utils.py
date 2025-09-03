@@ -1,6 +1,6 @@
 from typing import Final
 
-from norman_base_utils.singleton import Singleton
+from norman_utils_external.singleton import Singleton
 
 
 class FileUtils(metaclass=Singleton):

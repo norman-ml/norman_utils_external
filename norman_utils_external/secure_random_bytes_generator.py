@@ -2,7 +2,7 @@ import os
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms
 from cryptography.hazmat.backends import default_backend
-from norman_base_utils.singleton import Singleton
+from norman_utils_external.singleton import Singleton
 
 
 class SecureRandomBytesGenerator(metaclass=Singleton):

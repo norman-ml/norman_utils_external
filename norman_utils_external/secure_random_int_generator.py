@@ -1,4 +1,4 @@
-from norman_base_utils.secure_random_bytes_generator import SecureRandomBytesGenerator
+from norman_utils_external.secure_random_bytes_generator import SecureRandomBytesGenerator
 
 
 class SecureRandomIntGenerator:
