@@ -3,8 +3,8 @@ requires = ["setuptools==67.6.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "norman-base-utils"
-description = "norman base utils common classes"
+name = "norman-utils-external"
+description = "norman utils common classes"
 version = "0.0.1"
 authors = [
     {name = "Norman Artificial Intelligence LTD", email = "yonatan.alon@norman-ai.com"},
@@ -17,4 +17,4 @@ dependencies = [
 ]
 
 [tools.setuptools]
-packages = ["norman_base_utils"]
+packages = ["norman_utils_external"]
