@@ -33,13 +33,13 @@ class UUIDUtils:
         return UUIDUtils.int_to_bytes(int(id_str), length)
 
     @staticmethod
-    def add_suffix(id_bytes: bytes, suffix_len: int = 4) -> bytes:
+    def add_suffix(id_bytes: bytes, suffix_len: int = 4):
         suffix_source = UUIDUtils.optimized_unique_id(uuid.uuid4())
         suffix = suffix_source[:suffix_len]
         return id_bytes + suffix
 
     @staticmethod
-    def extract_suffix(id_bytes: bytes, suffix_len: int = 4) -> tuple[bytes, bytes]:
+    def extract_suffix(id_bytes: bytes, suffix_len: int = 4):
         if len(id_bytes) < suffix_len:
             raise ValueError("Provided bytes shorter than suffix length.")
         return id_bytes[:-suffix_len], id_bytes[-suffix_len:]
