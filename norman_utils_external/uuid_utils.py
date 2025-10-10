@@ -29,7 +29,7 @@ class UUIDUtils:
         return str(UUIDUtils.bytes_to_int(id_bytes))
 
     @staticmethod
-    def str_id_to_bytes(id_str: str, length: int):
+    def str_id_to_bytes(id_str: str, length: int = 16):
         return UUIDUtils.int_to_bytes(int(id_str), length)
 
     @staticmethod
