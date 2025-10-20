@@ -83,13 +83,15 @@ class JsonPreSerializer:
     def shallow_normalize(node):
         if hasattr(node, "__sensitive__"):
             return "<redacted>"
+        elif isinstance(node, Enum):
+            return node.value
         elif isinstance(node, dict):
             return {key: value for key, value in node.items() if not key.startswith("_")}
+        elif isinstance(node, (list, tuple, set)):
+            return [value for value in node]
         elif hasattr(node, "model_dump") and callable(getattr(node, "model_dump")):
             dict_representation = node.model_dump()
             return dict_representation
-        elif isinstance(node, (list, tuple, set)):
-            return [value for value in node]
         elif hasattr(node, "dict") and callable(getattr(node, "dict")):
             dict_representation = node.dict()
             return dict_representation
@@ -106,8 +108,6 @@ class JsonPreSerializer:
             return dict_representation
         elif isinstance(node, datetime):
             return DateUtils.datetime_to_string(node, DateUtils.iso_8061_format)
-        elif isinstance(node, Enum):
-            return node.value
         else:
             return node
 
