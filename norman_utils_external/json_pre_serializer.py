@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 
 from norman_utils_external.date_utils import DateUtils
 
@@ -83,25 +84,30 @@ class JsonPreSerializer:
         if hasattr(node, "__sensitive__"):
             return "<redacted>"
         elif isinstance(node, dict):
-            return {key: value for key, value in node.items()}
+            return {key: value for key, value in node.items() if not key.startswith("_")}
+        elif hasattr(node, "model_dump") and callable(getattr(node, "model_dump")):
+            dict_representation = node.model_dump()
+            return dict_representation
         elif isinstance(node, (list, tuple, set)):
             return [value for value in node]
         elif hasattr(node, "dict") and callable(getattr(node, "dict")):
             dict_representation = node.dict()
             return dict_representation
         elif hasattr(node, "__slots__"):
-            dict_representation = {key: getattr(node, key) for key in node.__slots__}
+            dict_representation = {key: getattr(node, key) for key in node.__slots__ if not key.startswith("_")}
             return dict_representation
         elif hasattr(node, "__dict__"):
-            dict_representation = {key: value for key, value in node.__dict__.items()}
+            dict_representation = {key: value for key, value in node.__dict__.items() if not key.startswith("_")}
             return dict_representation
         elif hasattr(node, "__items__"):
             node_items = getattr(node, "__items__")
             iterable = JsonPreSerializer.get_iterable(node_items)
-            dict_representation = {key: value for key, value in iterable}
+            dict_representation = {key: value for key, value in iterable if not key.startswith("_")}
             return dict_representation
         elif isinstance(node, datetime):
             return DateUtils.datetime_to_string(node, DateUtils.iso_8061_format)
+        elif isinstance(node, Enum):
+            return node.value
         else:
             return node
 
