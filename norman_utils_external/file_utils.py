@@ -1,3 +1,5 @@
+import io
+import os
 from typing import Final
 
 from norman_utils_external.singleton import Singleton
@@ -6,6 +8,13 @@ from norman_utils_external.singleton import Singleton
 class FileUtils(metaclass=Singleton):
     def __init__(self):
         self.__UTF8_BYTE_ORDER_MARKS: Final = ["efbbbf", "feff", "fffe"]
+
+    def get_buffer_size(file_obj):
+        if hasattr(file_obj, "fileno"):
+            return os.fstat(file_obj.fileno()).st_size
+        if isinstance(file_obj, io.BytesIO):
+            return file_obj.getbuffer().nbytes
+        raise ValueError("Unsupported file object or operation")
 
     def get_file_type(self, file_path: str):
         try:
