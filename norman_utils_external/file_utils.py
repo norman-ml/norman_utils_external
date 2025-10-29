@@ -9,6 +9,7 @@ class FileUtils(metaclass=Singleton):
     def __init__(self):
         self.__UTF8_BYTE_ORDER_MARKS: Final = ["efbbbf", "feff", "fffe"]
 
+    @staticmethod
     def get_buffer_size(file_obj):
         if hasattr(file_obj, "fileno"):
             return os.fstat(file_obj.fileno()).st_size
