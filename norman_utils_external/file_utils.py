@@ -24,7 +24,7 @@ class FileUtils(metaclass=Singleton):
         if hex_header.startswith("494433"):
             return "Audio", "mp3", "audio/mpeg"
         if hex_header.startswith("504b0304"):
-            return "File", "bin", "application/octet-stream" # `.pt` files have a zip header
+            return "File", "zip", "application/zip" # `.pt` files have a zip header
         if hex_header.startswith("89504e47"):
             return "Image", "png", "image/png"
         if hex_header.startswith("ffd8ff"):
