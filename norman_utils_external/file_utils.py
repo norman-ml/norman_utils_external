@@ -8,7 +8,7 @@ from norman_utils_external.singleton import Singleton
 class FileUtils(metaclass=Singleton):
     def __init__(self):
         self.__UTF8_BYTE_ORDER_MARKS: Final = ["efbbbf"]
-        self.__UTF16_BYTE_ORDER_MARKS: Final = ["feff", "fffe"]  #"Big endian and little endian, respectively"
+        self.__UTF16_BYTE_ORDER_MARKS: Final = ["feff", "fffe"]  # Big endian and little endian, respectively
 
     @staticmethod
     def get_buffer_size(file_obj):
