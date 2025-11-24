@@ -2,8 +2,19 @@ import re
 
 
 class DotSyntaxResolver:
+    """
+    Utility for resolving and mutating nested structures (dicts, lists, and
+    objects) using dot-syntax and bracket notation, e.g. `"a.b[0].c"`.
+    """
+
     @staticmethod
     def get(parent: object, key: str):
+        """
+        Retrieve a nested value using dot + bracket syntax such as
+        `"a.b[2].c"`. Supports dicts, lists, tuples, and object attributes.
+        Raises `KeyError` or `IndexError` if a segment is invalid.
+        """
+
         if key is not None:
             accessors = re.findall(r"[^\.\[\]]+|\[\d+\]", key)
             deepest_value = parent
@@ -19,6 +30,11 @@ class DotSyntaxResolver:
 
     @staticmethod
     def set(parent: object, key: str, value):
+        """
+        Set a nested value using dot + bracket syntax, creating intermediate
+        dict/list nodes as needed. Supports patterns like `"a.b[0].c = X"`.
+        """
+
         if not isinstance(parent, (dict, list)):
             raise TypeError("Can only set a value in a dict or list object")
 

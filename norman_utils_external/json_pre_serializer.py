@@ -5,9 +5,22 @@ from norman_utils_external.date_utils import DateUtils
 
 
 class JsonPreSerializer:
+    """
+    Utility for converting arbitrary Python objects into JSON-safe,
+    serialization-friendly structures. Handles cycles, dataclasses,
+    Pydantic models, enums, slots, sensitive fields, and datetime values.
+    """
 
     @staticmethod
     def prepare_for_serialization(context_var):
+        """
+        Fully normalize an object graph into a JSON-serializable structure.
+        Performs a two-pass BFS to:
+        - shallow-normalize each node
+        - rebuild references to avoid cycles
+        - remove private fields
+        - convert models/enums/datetimes into JSON-safe values
+        """
         # Create an id for the context var (using python id function, not the object id)
         context_var_id = id(context_var)
 
@@ -81,6 +94,16 @@ class JsonPreSerializer:
 
     @staticmethod
     def shallow_normalize(node):
+        """
+        Convert a single object into a JSON-safe shallow representation.
+        Handles:
+        - Sensitive fields → "<redacted>"
+        - Enum → enum.value
+        - dict/list/tuple/set → shallow copies
+        - Pydantic/dataclass (__dict__, __slots__) → dict form
+        - datetime → ISO-8601 string
+        """
+
         if hasattr(node, "__sensitive__"):
             return "<redacted>"
         elif isinstance(node, Enum):
@@ -122,6 +145,10 @@ class JsonPreSerializer:
 
     @staticmethod
     def create_stack_elements(node_collection):
+        """
+        Convert a normalized container (dict/list/tuple/set) into BFS queue
+        elements `(child, id(child))` for traversal.
+        """
         if isinstance(node_collection, dict):
             stack_elements = [(node, id(node)) for node in node_collection.values()]
             return stack_elements
