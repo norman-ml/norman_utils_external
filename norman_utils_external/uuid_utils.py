@@ -14,18 +14,6 @@ class UUIDUtils:
     - Generating sequential (time-ordered) UUIDs optimized for MySQL indexing
     - Reordering UUID bytes for improved locality in B-tree indexes
     - Converting UUIDs between bytes, integers, and string representations
-
-    **Why Sequential / Optimized UUIDs?**
-
-    - MySQL's InnoDB engine performs significantly better when primary keys
-      are *monotonically increasing*.
-    - `uuid.uuid1()` embeds a timestamp component, which allows ordering.
-    - By reordering the raw UUID1 bytes, the timestamp is moved to the *front*
-      of the binary representation, producing a **sequential, index-friendly ID**.
-
-    For reference:
-    - https://dev.mysql.com/blog-archive/mysql-8-0-uuid-support/
-    - https://dev.mysql.com/blog-archive/storing-uuid-values-in-mysql-tables/
     """
 
     @staticmethod
