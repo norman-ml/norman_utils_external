@@ -6,16 +6,7 @@ class DateUtils:
     Utility class providing helper methods for converting between
     `datetime` objects and formatted timestamp strings.
 
-    Supports both custom formats and two built-in formats commonly used
-    across the Norman platform:
-
-    - **utc_format** — `"YYYY-MM-DD HH:MM:SS.ssssss"`
-      Example: `1970-01-01 00:00:00.000000`
-
-    - **iso_8061_format** — `"YYYY-MM-DDTHH:MM:SS.ssssss+ZZZZ"`
-      Example: `1970-01-01T00:00:00.000000+0000`
-
-    These utilities are typically used for serialization, logging,
+    DateUtils is typically used for serialization, logging,
     persistence, or API interchange where consistent timestamp formatting
     is required.
 
@@ -26,13 +17,15 @@ class DateUtils:
 
     - **iso_8061_format** (`str`)
       ISO-8601–compliant timestamp format including timezone offset.
+
+    **Methods**
     """
 
     utc_format = "%Y-%m-%d %H:%M:%S.%f"      # 1970-01-01 00:00:00.000000
     iso_8061_format = "%Y-%m-%dT%H:%M:%S.%f%z"  # 1970-01-01T00:00:00.000000+0000
 
     @staticmethod
-    def datetime_to_string(date_time: datetime, date_format: str = None):
+    def datetime_to_string(date_time: datetime, date_format: str = None) -> str:
         """
         Convert a `datetime` object into a formatted timestamp string.
 
@@ -48,11 +41,6 @@ class DateUtils:
         **Returns**
 
         - **str** — The formatted timestamp string.
-
-        **Example**
-        ```python
-        ts = DateUtils.datetime_to_string(datetime.utcnow())
-        ```
         """
         if date_format is None:
             date_format = DateUtils.utc_format
@@ -60,7 +48,7 @@ class DateUtils:
         return datetime.strftime(date_time, date_format)
 
     @staticmethod
-    def string_to_datetime(date_string: str, date_format: str = None):
+    def string_to_datetime(date_string: str, date_format: str = None) -> datetime:
         """
         Parse a formatted timestamp string and convert it into a `datetime`
         object.
@@ -77,11 +65,6 @@ class DateUtils:
         **Returns**
 
         - **datetime** — Parsed datetime instance.
-
-        **Example**
-        ```python
-        dt = DateUtils.string_to_datetime("2024-01-01 00:00:00.000000")
-        ```
         """
         if date_format is None:
             date_format = DateUtils.utc_format

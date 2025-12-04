@@ -9,10 +9,12 @@ class JsonPreSerializer:
     Utility for converting arbitrary Python objects into JSON-safe,
     serialization-friendly structures. Handles cycles, dataclasses,
     Pydantic models, enums, slots, sensitive fields, and datetime values.
+
+    **Methods**
     """
 
     @staticmethod
-    def prepare_for_serialization(context_var):
+    def prepare_for_serialization(context_var) -> object:
         """
         Fully normalize an object graph into a JSON-serializable structure.
         Performs a two-pass BFS to:
@@ -20,6 +22,23 @@ class JsonPreSerializer:
         - rebuild references to avoid cycles
         - remove private fields
         - convert models/enums/datetimes into JSON-safe values
+
+        **Parameters**
+
+        - **context_var** (`object`)
+          Root object whose full object graph will be normalized for JSON
+          serialization.
+
+        **Returns**
+
+        - **object** — A fully JSON-safe structure composed only of
+          dictionaries, lists, primitive types, and ISO-8601 datetimes.
+
+        **Raises**
+
+        - **RuntimeError** — If an unexpected object graph structure prevents
+          traversal or normalization.
+
         """
         # Create an id for the context var (using python id function, not the object id)
         context_var_id = id(context_var)
@@ -93,7 +112,7 @@ class JsonPreSerializer:
         return node_lookup[context_var_id]
 
     @staticmethod
-    def shallow_normalize(node):
+    def shallow_normalize(node) -> object:
         """
         Convert a single object into a JSON-safe shallow representation.
         Handles:
@@ -102,6 +121,21 @@ class JsonPreSerializer:
         - dict/list/tuple/set → shallow copies
         - Pydantic/dataclass (__dict__, __slots__) → dict form
         - datetime → ISO-8601 string
+
+        **Parameters**
+
+        - **node** (`object`)
+          A single Python object to convert into a shallow JSON-friendly form.
+
+        **Returns**
+
+        - **object** — A shallow-normalized version of the object. This may be:
+          - a dict
+          - a list
+          - a primitive value
+          - an enum value
+          - an ISO-8601 string (for datetime)
+          - "<redacted>" for sensitive fields
         """
 
         if hasattr(node, "__sensitive__"):
@@ -135,7 +169,21 @@ class JsonPreSerializer:
             return node
 
     @staticmethod
-    def get_iterable(variable):
+    def get_iterable(variable) -> object:
+        """
+        **Parameters**
+
+        - **variable** (`object`)
+          A callable, dict, or iterable used to supply key–value pairs
+          during normalization.
+
+        **Returns**
+
+        - **object** — Either:
+          - the result of calling the variable (if callable)
+          - `dict.items()` for a dict
+          - the variable itself (if already iterable)
+        """
         if callable(variable):
             return variable()
         elif isinstance(variable, dict):
@@ -144,10 +192,21 @@ class JsonPreSerializer:
             return variable
 
     @staticmethod
-    def create_stack_elements(node_collection):
+    def create_stack_elements(node_collection) -> list[tuple[object, int]]:
         """
         Convert a normalized container (dict/list/tuple/set) into BFS queue
         elements `(child, id(child))` for traversal.
+
+        **Parameters**
+
+        - **node_collection** (`object`)
+          A normalized container (dict, list, tuple, set, or primitive) whose
+          children should be added to the BFS traversal queue.
+
+        **Returns**
+
+        - **list[tuple[object, int]]** —
+          A list of `(child_object, id(child_object))` tuples.
         """
         if isinstance(node_collection, dict):
             stack_elements = [(node, id(node)) for node in node_collection.values()]

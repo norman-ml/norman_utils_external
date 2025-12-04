@@ -28,6 +28,8 @@ class FileUtils(metaclass=Singleton):
     - Video: MP4
     - Text: UTF-8
     - Binary: fallback or unrecognized content
+
+    **Methods**
     """
 
     def __init__(self):
@@ -35,7 +37,7 @@ class FileUtils(metaclass=Singleton):
         self.__UTF16_BYTE_ORDER_MARKS: Final = ["feff", "fffe"]  # Big endian and little endian, respectively
 
     @staticmethod
-    def get_buffer_size(file_obj):
+    def get_buffer_size(file_obj) -> int:
         """
         Determine the size (in bytes) of the given file-like object.
 
@@ -57,12 +59,6 @@ class FileUtils(metaclass=Singleton):
         **Raises**
 
         - **ValueError** — If the object type is unsupported.
-
-        **Example**
-        ```python
-        with open("example.bin", "rb") as f:
-            size = FileUtils.get_buffer_size(f)
-        ```
         """
         if hasattr(file_obj, "fileno"):
             return os.fstat(file_obj.fileno()).st_size
@@ -70,7 +66,7 @@ class FileUtils(metaclass=Singleton):
             return file_obj.getbuffer().nbytes
         raise ValueError("Unsupported file object or operation")
 
-    def get_file_type(self, file_path: str):
+    def get_file_type(self, file_path: str) -> tuple[str, str, str]:
         """
         Infer the file type by examining the first 1024 bytes of the file.
 
@@ -93,14 +89,6 @@ class FileUtils(metaclass=Singleton):
           - Data modality (`"Audio"`, `"Image"`, `"Video"`, `"Text"`, `"File"`)
           - Logical extension (e.g., `"mp3"`, `"png"`, `"utf8"`, `"bin"`)
           - MIME type (e.g., `"audio/mpeg"`, `"image/png"`, `"application/octet-stream"`)
-
-        **Fallback Behavior**
-
-        If the file cannot be opened (e.g., permissions error), returns:
-
-        ```
-        ("File", "bin", "application/octet-stream")
-        ```
         """
         try:
             with open(file_path, "rb") as file:
@@ -119,26 +107,6 @@ class FileUtils(metaclass=Singleton):
         return self.__get_file_type_from_header(header)
 
     def __get_file_type_from_header(self, header: bytes):
-        """
-        Internal helper that classifies a file based solely on its header bytes.
-
-        Pattern-matches specific binary signatures (magic numbers) to known formats,
-        including:
-
-        - MP3 (`494433`)
-        - ZIP/PT (`504b0304`)
-        - PNG (`89504e47`)
-        - JPG (`ffd8ff`)
-        - AAC (`fff1` / `fff9`)
-        - WAV (`52494646` + `57415645`)
-        - MP4 (`...` + `66747970`)
-        - UTF-8 (via BOM or decode test)
-
-        **Returns**
-
-        - **tuple[str, str, str]** —
-          Same structure as `get_file_type`.
-        """
         hex_header = header.hex()
 
         if hex_header.startswith("494433"):
@@ -184,22 +152,6 @@ class FileUtils(metaclass=Singleton):
             return False
 
     def __is_utf8(self, header: bytes):
-        """
-        Determine whether the given header bytes represent UTF-8 text.
-
-        Detection strategy:
-
-        1. Check for UTF-8 BOM signatures:
-           - `EF BB BF`
-           - `FE FF`
-           - `FF FE`
-
-        2. Attempt a UTF-8 decode. If decoding succeeds → treat as UTF-8.
-
-        **Returns**
-
-        - **bool** — `True` if the content appears to be UTF-8 text, else `False`.
-        """
         for bom in self.__UTF8_BYTE_ORDER_MARKS:
             if header.hex().startswith(bom):
                 return True

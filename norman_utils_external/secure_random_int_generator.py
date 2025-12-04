@@ -41,6 +41,8 @@ class SecureRandomIntGenerator:
 
     - **rejection_threshold** (`int`)
       Values ≥ this threshold are rejected to avoid modulo bias.
+
+    **Methods**
     """
 
     def __init__(self, lower_bound: int, upper_bound: int):
@@ -59,7 +61,7 @@ class SecureRandomIntGenerator:
 
         self.rejection_threshold = self.max_value - (self.max_value % self.range_size)
 
-    def generate(self):
+    def generate(self) -> int:
         """
         Generate a secure random integer within the configured range.
 
@@ -70,26 +72,6 @@ class SecureRandomIntGenerator:
 
         - **int** — A cryptographically secure uniformly distributed integer
           between `lower_bound` and `upper_bound` (inclusive).
-
-        **Algorithm**
-
-        1. Request `bytes_needed` secure random bytes.
-        2. Convert bytes → integer (`value`).
-        3. Reject the value if:
-           ```
-           value >= rejection_threshold
-           ```
-           to avoid modulo bias.
-        4. Otherwise return:
-           ```
-           lower_bound + (value % range_size)
-           ```
-
-        **Example**
-        ```python
-        rng = SecureRandomIntGenerator(1, 100)
-        result = rng.generate()   # secure random integer between 1 and 100
-        ```
         """
         while True:
             random_bytes = self.entropy_source.next(self.bytes_needed)

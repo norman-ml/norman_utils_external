@@ -14,10 +14,12 @@ class UUIDUtils:
     - Generating sequential (time-ordered) UUIDs optimized for MySQL indexing
     - Reordering UUID bytes for improved locality in B-tree indexes
     - Converting UUIDs between bytes, integers, and string representations
+
+    **Methods**
     """
 
     @staticmethod
-    def optimized_unique_id(unique_id=None):
+    def optimized_unique_id(unique_id=None) -> bytes:
         """
         Generate a sequential, index-optimized UUID in 16-byte binary form.
 
@@ -49,11 +51,6 @@ class UUIDUtils:
         ```
 
         This produces IDs that grow in natural chronological order.
-
-        **Example**
-        ```python
-        binary_id = UUIDUtils.optimized_unique_id()
-        ```
         """
         if unique_id is None:
             unique_id = uuid.uuid1()
@@ -69,7 +66,7 @@ class UUIDUtils:
         return reordered_bytes
 
     @staticmethod
-    def bytes_to_int(id_bytes: bytes):
+    def bytes_to_int(id_bytes: bytes) -> int:
         """
         Convert a 16-byte UUID representation into its integer form.
 
@@ -79,16 +76,11 @@ class UUIDUtils:
 
         **Returns**
         - **int** — Integer representing the UUID.
-
-        **Example**
-        ```python
-        num = UUIDUtils.bytes_to_int(binary_uuid)
-        ```
         """
         return int.from_bytes(id_bytes, byteorder="big")
 
     @staticmethod
-    def int_to_bytes(id_int: int):
+    def int_to_bytes(id_int: int) -> bytes:
         """
         Convert an integer UUID representation back into 16 bytes.
 
@@ -98,16 +90,11 @@ class UUIDUtils:
 
         **Returns**
         - **bytes** — 16-byte big-endian UUID.
-
-        **Example**
-        ```python
-        b = UUIDUtils.int_to_bytes(123456789)
-        ```
         """
         return id_int.to_bytes(16, byteorder="big")
 
     @staticmethod
-    def bytes_to_str_id(id_bytes: bytes):
+    def bytes_to_str_id(id_bytes: bytes) -> str:
         """
         Convert a 16-byte UUID into a decimal string representation.
 
@@ -119,16 +106,11 @@ class UUIDUtils:
 
         **Returns**
         - **str** — Decimal string encoding of the UUID.
-
-        **Example**
-        ```python
-        s = UUIDUtils.bytes_to_str_id(b_uuid)
-        ```
         """
         return str(UUIDUtils.bytes_to_int(id_bytes))
 
     @staticmethod
-    def str_id_to_bytes(id_str: str):
+    def str_id_to_bytes(id_str: str) -> bytes:
         """
         Convert a decimal UUID string back into 16-byte form.
 
@@ -138,10 +120,5 @@ class UUIDUtils:
 
         **Returns**
         - **bytes** — 16-byte UUID.
-
-        **Example**
-        ```python
-        b = UUIDUtils.str_id_to_bytes("123456789123456789")
-        ```
         """
         return UUIDUtils.int_to_bytes(int(id_str))

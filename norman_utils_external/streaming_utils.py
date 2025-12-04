@@ -26,10 +26,12 @@ class StreamingUtils:
     - File-like objects exposing `.read()`
     - Async streaming sources (e.g., websocket streams, async file reads)
     - Iterables or async iterables of raw `bytes`
+
+    **Methods**
     """
 
     @staticmethod
-    async def chain_streams(*streams: Union[Iterable[bytes], AsyncIterable[bytes]]):
+    async def chain_streams(*streams: Union[Iterable[bytes], AsyncIterable[bytes]]) -> AsyncGenerator[bytes, None]:
         """
         Chain multiple byte streams (sync or async) into a single asynchronous
         generator, yielding chunks from each stream in order.
@@ -49,18 +51,6 @@ class StreamingUtils:
         **Yields**
 
         - **bytes** — Byte chunks from each stream in sequence.
-
-        **Example**
-        ```python
-        async def async_source():
-            for i in range(3):
-                yield f"async{i}".encode()
-
-        sync_source = [b"s0", b"s1"]
-
-        async for chunk in StreamingUtils.chain_streams(sync_source, async_source()):
-            print(chunk)
-        ```
         """
         for stream in streams:
             if hasattr(stream, "__aiter__"):
@@ -119,19 +109,6 @@ class StreamingUtils:
         - `.read()` returns empty bytes (`b""`)
         - `.read()` returns `None`
 
-        **Example**
-        ```python
-        def uppercase(chunk: bytes) -> bytes:
-            return chunk.upper()
-
-        async with aiofiles.open("data.txt", "rb") as f:
-            async for block in StreamingUtils.process_read_stream(
-                f,
-                processor=uppercase,
-                chunk_size=4096
-            ):
-                print(block)
-        ```
         """
         while True:
             if asyncio.iscoroutinefunction(file_stream.read):
