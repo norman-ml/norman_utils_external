@@ -1,4 +1,17 @@
 class Singleton(type):
+    """
+    Metaclass implementing the Singleton design pattern.
+
+    Classes using this metaclass will only ever have one instance.
+    Any attempt to instantiate the class again returns the same
+    previously created object.
+
+    **Attributes**
+
+    - **_instances** (`dict[type, Any]`)
+      Internal cache mapping classes to their singleton instances.
+    """
+
     _instances = {}
 
     def __call__(cls, *args, **kwargs):

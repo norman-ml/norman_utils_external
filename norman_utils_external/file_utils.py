@@ -6,19 +6,90 @@ from norman_utils_external.singleton import Singleton
 
 
 class FileUtils(metaclass=Singleton):
+    """
+    Utility class for performing file-related operations, including
+    buffer-size detection, file type inference from binary headers,
+    and UTF-8 detection.
+
+    This class is implemented as a singleton to ensure consistent and
+    efficient use across the system, especially for repetitive header
+    inspections and file classification logic.
+
+    **File Type Detection**
+    The `get_file_type` method reads a portion of the file and determines
+    its:
+    - Data modality (Audio, Image, Text, File, Video)
+    - Logical extension (e.g., `mp3`, `png`, `utf8`)
+    - MIME type (e.g., `audio/mpeg`, `image/jpeg`, `text/plain`)
+
+    It supports common formats used inside the Norman platform:
+    - Audio: MP3, AAC, WAV
+    - Image: PNG, JPG
+    - Video: MP4
+    - Text: UTF-8
+    - Binary: fallback or unrecognized content
+
+    **Methods**
+    """
+
     def __init__(self):
         self.__UTF8_BYTE_ORDER_MARKS: Final = ["efbbbf"]
         self.__UTF16_BYTE_ORDER_MARKS: Final = ["feff", "fffe"]  # Big endian and little endian, respectively
 
     @staticmethod
-    def get_buffer_size(file_obj):
+    def get_buffer_size(file_obj) -> int:
+        """
+        Determine the size (in bytes) of the given file-like object.
+
+        Supports:
+        - Standard file objects with a `fileno()`
+        - In-memory `io.BytesIO` buffers
+
+        **Parameters**
+
+        - **file_obj**
+          A file-like object. Must either:
+          - Support `fileno()`
+          - Be an instance of `io.BytesIO`
+
+        **Returns**
+
+        - **int** — Total number of bytes in the file or buffer.
+
+        **Raises**
+
+        - **ValueError** — If the object type is unsupported.
+        """
         if hasattr(file_obj, "fileno"):
             return os.fstat(file_obj.fileno()).st_size
         if isinstance(file_obj, io.BytesIO):
             return file_obj.getbuffer().nbytes
         raise ValueError("Unsupported file object or operation")
 
-    def get_file_type(self, file_path: str):
+    def get_file_type(self, file_path: str) -> tuple[str, str, str]:
+        """
+        Infer the file type by examining the first 1024 bytes of the file.
+
+        This method attempts to classify the file into high-level categories
+        such as audio, image, video, text, or generic binary, and returns
+        a tuple containing:
+
+        ```
+        (data_modality, logical_extension, mime_type)
+        ```
+
+        **Parameters**
+
+        - **file_path** (`str`)
+          Path to the file to inspect.
+
+        **Returns**
+
+        - **tuple[str, str, str]** —
+          - Data modality (`"Audio"`, `"Image"`, `"Video"`, `"Text"`, `"File"`)
+          - Logical extension (e.g., `"mp3"`, `"png"`, `"utf8"`, `"bin"`)
+          - MIME type (e.g., `"audio/mpeg"`, `"image/png"`, `"application/octet-stream"`)
+        """
         try:
             with open(file_path, "rb") as file:
                 header = file.read(1024)
