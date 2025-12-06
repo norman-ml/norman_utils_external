@@ -2,8 +2,34 @@ import re
 
 
 class DotSyntaxResolver:
+    """
+    Utility for resolving and mutating nested structures (dicts, lists, and
+    objects) using dot-syntax and bracket notation.
+
+    **Methods**
+    """
+
     @staticmethod
-    def get(parent: object, key: str):
+    def get(parent: object, key: str) -> object:
+        """
+        Retrieve a nested value using dot + bracket syntax such as
+        `"a.b[2].c"`. Supports dicts, lists, tuples, and object attributes.
+        Raises `KeyError` or `IndexError` if a segment is invalid.
+
+        **Parameters**
+
+        - **parent** (`object`)
+            The root object from which resolution begins. May be a dictionary,
+            list, tuple, or any object supporting attribute access.
+
+        - **key** (`str`)
+            Dot + bracket–notation path used to navigate into the nested structure.
+
+        **Returns**
+
+        - **object** - The resolved nested value. Type depends on the structure.
+        """
+
         if key is not None:
             accessors = re.findall(r"[^\.\[\]]+|\[\d+\]", key)
             deepest_value = parent
@@ -18,7 +44,34 @@ class DotSyntaxResolver:
         return None
 
     @staticmethod
-    def set(parent: object, key: str, value):
+    def set(parent: object, key: str, value: object) -> object:
+        """
+        Set a nested value using dot + bracket syntax, creating intermediate
+        dict/list nodes as needed. Supports patterns like `"a.b[0].c = X"`.
+
+        **Parameters**
+
+        - **parent** (`object`)
+            A dictionary or list into which the nested value will be written.
+            Intermediate containers are created automatically.
+
+        - **key** (`str`)
+            Dot + bracket–notation path specifying where the value should be
+            assigned.
+
+        - **value** (`object`)
+        The value to assign at the target location. Can be any Python object,
+        including primitives, dictionaries, lists, or custom types.
+
+        **Returns**
+
+        - **object** - The modified `parent` containing the updated structure.
+
+        **Raises**
+
+        - **ValueError** - If the provided key uses malformed list index syntax
+        """
+
         if not isinstance(parent, (dict, list)):
             raise TypeError("Can only set a value in a dict or list object")
 

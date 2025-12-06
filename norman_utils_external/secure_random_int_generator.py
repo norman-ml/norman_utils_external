@@ -2,6 +2,37 @@ from norman_utils_external.secure_random_bytes_generator import SecureRandomByte
 
 
 class SecureRandomIntGenerator:
+    """
+    Cryptographically secure random integer generator for producing uniformly
+    distributed integers within a specified inclusive range.
+
+    This generator uses `SecureRandomBytesGenerator` (ChaCha20-based) as its
+    entropy source and applies *rejection sampling* to guarantee an unbiased
+    distribution even when the range does not evenly divide the underlying
+    byte space.
+
+    **Constructor**
+
+    **__init__(lower_bound: int, upper_bound: int)**
+
+    Creates a new random integer generator bound to the inclusive interval
+    `[lower_bound, upper_bound]`. The constructor validates the bounds,
+    initializes a secure entropy source, and precomputes internal values
+    required for unbiased rejection sampling.
+
+    **Parameters**
+
+    - **lower_bound** (`int`)
+        The smallest integer that may be generated. Must be strictly smaller
+        than `upper_bound`.
+
+    - **upper_bound** (`int`)
+        The largest integer that may be generated. Must be strictly greater
+        than `lower_bound`.
+
+    **Methods**
+    """
+
     def __init__(self, lower_bound: int, upper_bound: int):
         if lower_bound >= upper_bound:
             raise ValueError("lower bound must be smaller then upper bound")
@@ -18,7 +49,18 @@ class SecureRandomIntGenerator:
 
         self.rejection_threshold = self.max_value - (self.max_value % self.range_size)
 
-    def generate(self):
+    def generate(self) -> int:
+        """
+        Generate a secure random integer within the configured range.
+
+        Uses rejection sampling to ensure every integer in the range
+        `[lower_bound, upper_bound]` has equal probability.
+
+        **Returns**
+
+        - **int** - A cryptographically secure uniformly distributed integer
+          between `lower_bound` and `upper_bound` (inclusive).
+        """
         while True:
             random_bytes = self.entropy_source.next(self.bytes_needed)
             value = int.from_bytes(random_bytes, byteorder="big")
