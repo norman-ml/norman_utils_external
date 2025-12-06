@@ -118,11 +118,11 @@ class JsonPreSerializer:
         Convert a single object into a JSON-safe representation.
         Handles:
 
-        - Sensitive fields → `<redacted>`
-        - Enum → enum.value
-        - dict/list/tuple/set → shallow copies
-        - Pydantic/dataclass (__dict__, __slots__) → dict form
-        - datetime → ISO-8601 string
+        - Sensitive fields - `<redacted>`
+        - Enum - enum.value
+        - dict/list/tuple/set - shallow copies
+        - Pydantic/dataclass (__dict__, __slots__) - dict form
+        - datetime - ISO-8601 string
 
         **Parameters**
 

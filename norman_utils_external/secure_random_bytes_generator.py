@@ -11,6 +11,7 @@ class SecureRandomBytesGenerator(metaclass=Singleton):
 
     This utility produces an arbitrary number of cryptographically strong
     random bytes, suitable for:
+
     - Nonces
     - Encryption keys
     - Session tokens
