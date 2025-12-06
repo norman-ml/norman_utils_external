@@ -38,18 +38,6 @@ class UUIDUtils:
 
         - **bytes** - 16-byte reordered UUID suitable for database storage.
 
-        **Reordering Format**
-
-        Original UUID1 byte layout:
-        ```
-        time_low | time_mid | time_hi_version | clock_seq | node
-        ```
-
-        Reordered layout (timestamp first):
-        ```
-        bytes[6:8] + bytes[4:6] + bytes[0:4] + bytes[8:16]
-        ```
-
         This produces IDs that grow in natural chronological order.
         """
         if unique_id is None:
