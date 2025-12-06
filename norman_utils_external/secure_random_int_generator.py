@@ -13,6 +13,8 @@ class SecureRandomIntGenerator:
 
     **Constructor**
 
+    **__init__(lower_bound: int, upper_bound: int)**
+
     Creates a new random integer generator bound to the inclusive interval
     `[lower_bound, upper_bound]`. The constructor validates the bounds,
     initializes a secure entropy source, and precomputes internal values

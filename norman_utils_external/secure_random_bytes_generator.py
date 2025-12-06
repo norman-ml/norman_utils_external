@@ -24,6 +24,8 @@ class SecureRandomBytesGenerator(metaclass=Singleton):
 
     **Constructor**
 
+    ***__init__()***
+
     Initializes the internal ChaCha20 stream cipher using a randomly
     generated 256-bit key and 128-bit nonce. The cipher is kept as a
     persistent encryptor object so that successive calls to `next()`

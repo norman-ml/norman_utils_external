@@ -17,6 +17,8 @@ class FileUtils(metaclass=Singleton):
 
     **Constructor**
 
+    ***__init__()***
+
     Initialize internal UTF-8 and UTF-16 byte-order marker tables used for
     text-encoding detection.
 
