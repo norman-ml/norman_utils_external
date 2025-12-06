@@ -15,12 +15,22 @@ class FileUtils(metaclass=Singleton):
     efficient use across the system, especially for repetitive header
     inspections and file classification logic.
 
+    **Constructor**
+
+    Initialize internal UTF-8 and UTF-16 byte-order marker tables used for
+    text-encoding detection.
+
+    This constructor is intentionally lightweight because the class is a
+    singleton; instances are reused across the system to minimize repeated
+    header-inspection setup.
+
+
     **Methods**
     """
 
     def __init__(self):
         self.__UTF8_BYTE_ORDER_MARKS: Final = ["efbbbf"]
-        self.__UTF16_BYTE_ORDER_MARKS: Final = ["feff", "fffe"]  # Big endian and little endian, respectively
+        self.__UTF16_BYTE_ORDER_MARKS: Final = ["feff", "fffe"]  # Big endian & little endian
 
     @staticmethod
     def get_buffer_size(file_obj) -> int:

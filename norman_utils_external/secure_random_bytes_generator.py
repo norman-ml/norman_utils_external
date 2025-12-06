@@ -22,6 +22,14 @@ class SecureRandomBytesGenerator(metaclass=Singleton):
     ChaCha20 stream cipher state is preserved across calls. This avoids
     reseeding and ensures consistent forward-secure random output.
 
+    **Constructor**
+
+    Initializes the internal ChaCha20 stream cipher using a randomly
+    generated 256-bit key and 128-bit nonce. The cipher is kept as a
+    persistent encryptor object so that successive calls to `next()`
+    continue the stream, ensuring cryptographically strong forward-secure
+    random output.
+
     **Methods**
     """
 

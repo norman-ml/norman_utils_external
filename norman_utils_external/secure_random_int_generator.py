@@ -11,6 +11,23 @@ class SecureRandomIntGenerator:
     distribution even when the range does not evenly divide the underlying
     byte space.
 
+    **Constructor**
+
+    Creates a new random integer generator bound to the inclusive interval
+    `[lower_bound, upper_bound]`. The constructor validates the bounds,
+    initializes a secure entropy source, and precomputes internal values
+    required for unbiased rejection sampling.
+
+    **Parameters**
+
+    - **lower_bound** (`int`)
+        The smallest integer that may be generated. Must be strictly smaller
+        than `upper_bound`.
+
+    - **upper_bound** (`int`)
+        The largest integer that may be generated. Must be strictly greater
+        than `lower_bound`.
+
     **Methods**
     """
 
