@@ -114,8 +114,9 @@ class JsonPreSerializer:
     @staticmethod
     def shallow_normalize(node) -> object:
         """
-        Convert a single object into a JSON-safe shallow representation.
+        Convert a single object into a JSON-safe representation.
         Handles:
+
         - Sensitive fields → "<redacted>"
         - Enum → enum.value
         - dict/list/tuple/set → shallow copies
@@ -129,13 +130,14 @@ class JsonPreSerializer:
 
         **Returns**
 
-        - **object** — A shallow-normalized version of the object. This may be:
-          - a dict
-          - a list
-          - a primitive value
-          - an enum value
-          - an ISO-8601 string (for datetime)
-          - "<redacted>" for sensitive fields
+        - **object** - A shallow-normalized version of the object. This may be:
+
+              - a dict
+              - a list
+              - a primitive value
+              - an enum value
+              - an ISO-8601 string (for datetime)
+              - "<redacted>" for sensitive fields
         """
 
         if hasattr(node, "__sensitive__"):
@@ -179,10 +181,11 @@ class JsonPreSerializer:
 
         **Returns**
 
-        - **object** — Either:
-          - the result of calling the variable (if callable)
-          - `dict.items()` for a dict
-          - the variable itself (if already iterable)
+        - **object** - Either:
+
+              - the result of calling the variable (if callable)
+              - `dict.items()` for a dict
+              - the variable itself (if already iterable)
         """
         if callable(variable):
             return variable()

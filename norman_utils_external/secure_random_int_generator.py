@@ -19,29 +19,6 @@ class SecureRandomIntGenerator:
       are discarded.
     - The accepted value is reduced to the desired range and returned.
 
-    **Attributes**
-
-    - **lower_bound** (`int`)
-      Inclusive minimum integer that may be returned.
-
-    - **upper_bound** (`int`)
-      Inclusive maximum integer that may be returned.
-
-    - **range_size** (`int`)
-      Size of the integer domain (`upper_bound - lower_bound + 1`).
-
-    - **bits_needed** (`int`)
-      Minimum number of bits required to represent all values in the range.
-
-    - **bytes_needed** (`int`)
-      Number of bytes needed to contain `bits_needed`.
-
-    - **max_value** (`int`)
-      Maximum integer representable by `bytes_needed` bytes.
-
-    - **rejection_threshold** (`int`)
-      Values ≥ this threshold are rejected to avoid modulo bias.
-
     **Methods**
     """
 

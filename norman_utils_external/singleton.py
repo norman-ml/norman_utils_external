@@ -9,7 +9,7 @@ class Singleton(type):
     **Attributes**
 
     - **_instances** (`dict[type, Any]`)
-      Internal cache mapping classes to their singleton instances.
+      The internal cache mapping classes to their singleton instances. Ensures no class whose metadata class is the Singleton class will be instantiated twice.
     """
 
     _instances = {}

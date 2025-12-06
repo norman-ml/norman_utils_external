@@ -15,19 +15,14 @@ class FileUtils(metaclass=Singleton):
     efficient use across the system, especially for repetitive header
     inspections and file classification logic.
 
-    **File Type Detection**
-    The `get_file_type` method reads a portion of the file and determines
-    its:
-    - Data modality (Audio, Image, Text, File, Video)
-    - Logical extension (e.g., `mp3`, `png`, `utf8`)
-    - MIME type (e.g., `audio/mpeg`, `image/jpeg`, `text/plain`)
+    **Attributes**
 
-    It supports common formats used inside the Norman platform:
-    - Audio: MP3, AAC, WAV
-    - Image: PNG, JPG
-    - Video: MP4
-    - Text: UTF-8
-    - Binary: fallback or unrecognized content
+    - **__UTF8_BYTE_ORDER_MARKS** (`list[str]`)
+      Hexadecimal byte-order marks used to identify UTF-8 encoded text files.
+
+    - **__UTF16_BYTE_ORDER_MARKS** (`list[str]`)
+      Hexadecimal byte-order marks used to identify UTF-16 big-endian and
+      little-endian encoded text files.
 
     **Methods**
     """
@@ -70,13 +65,36 @@ class FileUtils(metaclass=Singleton):
         """
         Infer the file type by examining the first 1024 bytes of the file.
 
-        This method attempts to classify the file into high-level categories
-        such as audio, image, video, text, or generic binary, and returns
-        a tuple containing:
+        The detection process works in multiple stages:
 
-        ```
-        (data_modality, logical_extension, mime_type)
-        ```
+        ***Magic Number (Signature) Detection***
+           The method first reads the initial 1024 bytes of the file and checks
+           the leading bytes against known file signatures (magic numbers) for
+           common formats such as:
+
+           - MP3, WAV, AAC (Audio)
+           - PNG, JPG (Image)
+           - MP4 (Video)
+           - ZIP-based binary formats (e.g., `.pt`)
+
+           If a known signature is matched, the corresponding modality,
+           logical extension, and MIME type are returned.
+
+        ***Text Encoding Detection (Fallback)***
+           If no magic number is recognized, the method attempts to classify
+           the file as UTF-16 or UTF-8 text by:
+
+           - Checking for BOM (byte-order mark) values
+           - Attempting to decode the first 1024 bytes using `utf-16`
+           - Attempting to decode the first 1024 bytes using `utf-8`
+
+           A successful decode indicates that the file is a text file in the
+           detected encoding.
+
+        ***Default Classification***
+
+           If all checks fail, the file is treated as a generic binary file
+           (`application/octet-stream`).
 
         **Parameters**
 
@@ -85,7 +103,8 @@ class FileUtils(metaclass=Singleton):
 
         **Returns**
 
-        - **tuple[str, str, str]** —
+        - **tuple[str, str, str]**
+
           - Data modality (`"Audio"`, `"Image"`, `"Video"`, `"Text"`, `"File"`)
           - Logical extension (e.g., `"mp3"`, `"png"`, `"utf8"`, `"bin"`)
           - MIME type (e.g., `"audio/mpeg"`, `"image/png"`, `"application/octet-stream"`)

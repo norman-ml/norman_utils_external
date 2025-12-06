@@ -59,6 +59,10 @@ class DotSyntaxResolver:
             Dot + bracket–notation path specifying where the value should be
             assigned.
 
+        - **value** (`object`)
+        The value to assign at the target location. Can be any Python object,
+        including primitives, dictionaries, lists, or custom types.
+
         **Returns**
 
         - **object** — The modified `parent` containing the updated structure.

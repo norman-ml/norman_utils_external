@@ -17,12 +17,14 @@ class StreamingUtils:
     supporting both synchronous and asynchronous producers.
 
     These functions are useful for:
+
     - Merging multiple byte streams (sync or async)
     - Reading from buffered readers in chunks
     - Applying transformations (processing functions) to each chunk
     - Yielding processed or raw output as an async generator
 
     Supports interaction with:
+
     - File-like objects exposing `.read()`
     - Async streaming sources (e.g., websocket streams, async file reads)
     - Iterables or async iterables of raw `bytes`
@@ -37,6 +39,7 @@ class StreamingUtils:
         generator, yielding chunks from each stream in order.
 
         This function abstracts the difference between:
+
         - Synchronous iterables of bytes (`Iterable[bytes]`)
         - Asynchronous iterables of bytes (`AsyncIterable[bytes]`)
 
@@ -74,6 +77,7 @@ class StreamingUtils:
 
         This helper is useful when streaming large files or socket data and
         applying on-the-fly transformations, such as:
+
         - hashing
         - compression / decompression
         - encryption / decryption
@@ -88,6 +92,7 @@ class StreamingUtils:
 
         - **processor** (`Callable[[bytes], T] | Callable[[bytes], Any]`)
           Function applied to each chunk.
+
           - If `yield_processed=True`, the output of this function is yielded.
           - If `yield_processed=False`, the raw chunk is yielded instead.
 
@@ -96,19 +101,13 @@ class StreamingUtils:
 
         - **yield_processed** (`bool`, default `True`)
           Controls what gets yielded:
-          - `True` → yield `processor(chunk)`
-          - `False` → yield the raw `bytes` chunk
+
+              - `True` → yield `processor(chunk)`
+              - `False` → yield the raw `bytes` chunk
 
         **Yields**
 
-        - If `yield_processed=True`: values of type `T` returned by `processor()`
-        - If `yield_processed=False`: raw `bytes` chunks
-
-        **Stops When**
-
-        - `.read()` returns empty bytes (`b""`)
-        - `.read()` returns `None`
-
+        This generator yields values of type `Union[T, bytes]`: either processed items of type `T` produced by `processor()` when `yield_processed=True`, or raw `bytes` chunks when `yield_processed=False`.
         """
         while True:
             if asyncio.iscoroutinefunction(file_stream.read):
