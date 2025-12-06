@@ -71,10 +71,12 @@ class UUIDUtils:
         Convert a 16-byte UUID representation into its integer form.
 
         **Parameters**
+
         - **id_bytes** (`bytes`)
           16-byte UUID.
 
         **Returns**
+
         - **int** — Integer representing the UUID.
         """
         return int.from_bytes(id_bytes, byteorder="big")
@@ -85,10 +87,12 @@ class UUIDUtils:
         Convert an integer UUID representation back into 16 bytes.
 
         **Parameters**
+
         - **id_int** (`int`)
           Integer UUID.
 
         **Returns**
+
         - **bytes** — 16-byte big-endian UUID.
         """
         return id_int.to_bytes(16, byteorder="big")
@@ -97,14 +101,15 @@ class UUIDUtils:
     def bytes_to_str_id(id_bytes: bytes) -> str:
         """
         Convert a 16-byte UUID into a decimal string representation.
-
         Useful for serializing integer-based UUIDs to JSON or logs.
 
         **Parameters**
+
         - **id_bytes** (`bytes`)
           16-byte UUID.
 
         **Returns**
+
         - **str** — Decimal string encoding of the UUID.
         """
         return str(UUIDUtils.bytes_to_int(id_bytes))
@@ -115,10 +120,12 @@ class UUIDUtils:
         Convert a decimal UUID string back into 16-byte form.
 
         **Parameters**
+
         - **id_str** (`str`)
           Decimal string produced from `bytes_to_str_id()`.
 
         **Returns**
+
         - **bytes** — 16-byte UUID.
         """
         return UUIDUtils.int_to_bytes(int(id_str))

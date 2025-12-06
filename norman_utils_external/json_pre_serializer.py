@@ -18,6 +18,7 @@ class JsonPreSerializer:
         """
         Fully normalize an object graph into a JSON-serializable structure.
         Performs a two-pass BFS to:
+
         - shallow-normalize each node
         - rebuild references to avoid cycles
         - remove private fields
