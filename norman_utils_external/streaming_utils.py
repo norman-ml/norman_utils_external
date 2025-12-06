@@ -53,7 +53,7 @@ class StreamingUtils:
 
         **Yields**
 
-        - **bytes** — Byte chunks from each stream in sequence.
+        - **bytes** - Byte chunks from each stream in sequence.
         """
         for stream in streams:
             if hasattr(stream, "__aiter__"):
@@ -93,8 +93,8 @@ class StreamingUtils:
         - **processor** (`Callable[[bytes], T] | Callable[[bytes], Any]`)
           Function applied to each chunk.
 
-          - If `yield_processed=True`, the output of this function is yielded.
-          - If `yield_processed=False`, the raw chunk is yielded instead.
+              - If `yield_processed=True`, the output of this function is yielded.
+              - If `yield_processed=False`, the raw chunk is yielded instead.
 
         - **chunk_size** (`int`)
           Maximum number of bytes to read per iteration.
@@ -102,12 +102,12 @@ class StreamingUtils:
         - **yield_processed** (`bool`, default `True`)
           Controls what gets yielded:
 
-              - `True` → yield `processor(chunk)`
-              - `False` → yield the raw `bytes` chunk
+              - `True` yield `processor(chunk)`
+              - `False` yield the raw `bytes` chunk
 
         **Yields**
 
-        This generator yields values of type `Union[T, bytes]`: either processed items of type `T` produced by `processor()` when `yield_processed=True`, or raw `bytes` chunks when `yield_processed=False`.
+        - **Union[T, bytes]** - This generator yields values: either processed items of type `T` produced by `processor()` when `yield_processed=True`, or raw `bytes` chunks when `yield_processed=False`.
         """
         while True:
             if asyncio.iscoroutinefunction(file_stream.read):

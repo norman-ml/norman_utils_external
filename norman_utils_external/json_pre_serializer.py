@@ -32,12 +32,12 @@ class JsonPreSerializer:
 
         **Returns**
 
-        - **object** — A fully JSON-safe structure composed only of
+        - **object** - A fully JSON-safe structure composed only of
           dictionaries, lists, primitive types, and ISO-8601 datetimes.
 
         **Raises**
 
-        - **RuntimeError** — If an unexpected object graph structure prevents
+        - **RuntimeError** - If an unexpected object graph structure prevents
           traversal or normalization.
 
         """
@@ -118,7 +118,7 @@ class JsonPreSerializer:
         Convert a single object into a JSON-safe representation.
         Handles:
 
-        - Sensitive fields → "<redacted>"
+        - Sensitive fields → `<redacted>`
         - Enum → enum.value
         - dict/list/tuple/set → shallow copies
         - Pydantic/dataclass (__dict__, __slots__) → dict form
@@ -138,7 +138,7 @@ class JsonPreSerializer:
               - a primitive value
               - an enum value
               - an ISO-8601 string (for datetime)
-              - "<redacted>" for sensitive fields
+              - `<redacted>` for sensitive fields
         """
 
         if hasattr(node, "__sensitive__"):
@@ -209,7 +209,7 @@ class JsonPreSerializer:
 
         **Returns**
 
-        - **list[tuple[object, int]]** —
+        - **list[tuple[object, int]]** -
           A list of `(child_object, id(child_object))` tuples.
         """
         if isinstance(node_collection, dict):

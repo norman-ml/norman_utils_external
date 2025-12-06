@@ -40,7 +40,7 @@ class DateUtils:
 
         **Returns**
 
-        - **str** — The formatted timestamp string.
+        - **str** - The formatted timestamp string.
         """
         if date_format is None:
             date_format = DateUtils.utc_format
@@ -64,7 +64,7 @@ class DateUtils:
 
         **Returns**
 
-        - **datetime** — Parsed datetime instance.
+        - **datetime** - Parsed datetime instance.
         """
         if date_format is None:
             date_format = DateUtils.utc_format

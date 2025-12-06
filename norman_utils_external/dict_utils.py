@@ -47,7 +47,7 @@ class DictUtils:
 
         **Returns**
 
-        - **Dict[str, Any]** — The updated `source_dict` after merging.
+        - **Dict[str, Any]** - The updated `source_dict` after merging.
         """
         node_queue = deque()
         node_queue.append((source_dict, target_dict))

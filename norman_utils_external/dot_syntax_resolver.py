@@ -27,7 +27,7 @@ class DotSyntaxResolver:
 
         **Returns**
 
-        - **object** — The resolved nested value. Type depends on the structure.
+        - **object** - The resolved nested value. Type depends on the structure.
         """
 
         if key is not None:
@@ -65,11 +65,11 @@ class DotSyntaxResolver:
 
         **Returns**
 
-        - **object** — The modified `parent` containing the updated structure.
+        - **object** - The modified `parent` containing the updated structure.
 
         **Raises**
 
-        - **ValueError** — If the provided key uses malformed list index syntax
+        - **ValueError** - If the provided key uses malformed list index syntax
         """
 
         if not isinstance(parent, (dict, list)):

@@ -11,14 +11,6 @@ class SecureRandomIntGenerator:
     distribution even when the range does not evenly divide the underlying
     byte space.
 
-    **How It Works**
-
-    - A stream of secure random bytes is generated using ChaCha20.
-    - The random bytes are converted to an integer (`value`).
-    - Values falling inside a “rejection zone”—which would cause modulo bias—
-      are discarded.
-    - The accepted value is reduced to the desired range and returned.
-
     **Methods**
     """
 
@@ -47,7 +39,7 @@ class SecureRandomIntGenerator:
 
         **Returns**
 
-        - **int** — A cryptographically secure uniformly distributed integer
+        - **int** - A cryptographically secure uniformly distributed integer
           between `lower_bound` and `upper_bound` (inclusive).
         """
         while True:

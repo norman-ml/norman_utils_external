@@ -36,7 +36,7 @@ class UUIDUtils:
 
         **Returns**
 
-        - **bytes** — 16-byte reordered UUID suitable for database storage.
+        - **bytes** - 16-byte reordered UUID suitable for database storage.
 
         **Reordering Format**
 
@@ -77,7 +77,7 @@ class UUIDUtils:
 
         **Returns**
 
-        - **int** — Integer representing the UUID.
+        - **int** - Integer representing the UUID.
         """
         return int.from_bytes(id_bytes, byteorder="big")
 
@@ -93,7 +93,7 @@ class UUIDUtils:
 
         **Returns**
 
-        - **bytes** — 16-byte big-endian UUID.
+        - **bytes** - 16-byte big-endian UUID.
         """
         return id_int.to_bytes(16, byteorder="big")
 
@@ -110,7 +110,7 @@ class UUIDUtils:
 
         **Returns**
 
-        - **str** — Decimal string encoding of the UUID.
+        - **str** - Decimal string encoding of the UUID.
         """
         return str(UUIDUtils.bytes_to_int(id_bytes))
 
@@ -126,6 +126,6 @@ class UUIDUtils:
 
         **Returns**
 
-        - **bytes** — 16-byte UUID.
+        - **bytes** - 16-byte UUID.
         """
         return UUIDUtils.int_to_bytes(int(id_str))

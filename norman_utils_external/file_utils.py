@@ -15,15 +15,6 @@ class FileUtils(metaclass=Singleton):
     efficient use across the system, especially for repetitive header
     inspections and file classification logic.
 
-    **Attributes**
-
-    - **__UTF8_BYTE_ORDER_MARKS** (`list[str]`)
-      Hexadecimal byte-order marks used to identify UTF-8 encoded text files.
-
-    - **__UTF16_BYTE_ORDER_MARKS** (`list[str]`)
-      Hexadecimal byte-order marks used to identify UTF-16 big-endian and
-      little-endian encoded text files.
-
     **Methods**
     """
 
@@ -44,16 +35,17 @@ class FileUtils(metaclass=Singleton):
 
         - **file_obj**
           A file-like object. Must either:
-          - Support `fileno()`
-          - Be an instance of `io.BytesIO`
+
+              - Support `fileno()`
+              - Be an instance of `io.BytesIO`
 
         **Returns**
 
-        - **int** — Total number of bytes in the file or buffer.
+        - **int** - Total number of bytes in the file or buffer.
 
         **Raises**
 
-        - **ValueError** — If the object type is unsupported.
+        - **ValueError** - If the object type is unsupported.
         """
         if hasattr(file_obj, "fileno"):
             return os.fstat(file_obj.fileno()).st_size
@@ -63,38 +55,7 @@ class FileUtils(metaclass=Singleton):
 
     def get_file_type(self, file_path: str) -> tuple[str, str, str]:
         """
-        Infer the file type by examining the first 1024 bytes of the file.
-
-        The detection process works in multiple stages:
-
-        ***Magic Number (Signature) Detection***
-           The method first reads the initial 1024 bytes of the file and checks
-           the leading bytes against known file signatures (magic numbers) for
-           common formats such as:
-
-           - MP3, WAV, AAC (Audio)
-           - PNG, JPG (Image)
-           - MP4 (Video)
-           - ZIP-based binary formats (e.g., `.pt`)
-
-           If a known signature is matched, the corresponding modality,
-           logical extension, and MIME type are returned.
-
-        ***Text Encoding Detection (Fallback)***
-           If no magic number is recognized, the method attempts to classify
-           the file as UTF-16 or UTF-8 text by:
-
-           - Checking for BOM (byte-order mark) values
-           - Attempting to decode the first 1024 bytes using `utf-16`
-           - Attempting to decode the first 1024 bytes using `utf-8`
-
-           A successful decode indicates that the file is a text file in the
-           detected encoding.
-
-        ***Default Classification***
-
-           If all checks fail, the file is treated as a generic binary file
-           (`application/octet-stream`).
+        Infer the file type by examining the first bytes of the file.
 
         **Parameters**
 
@@ -105,9 +66,9 @@ class FileUtils(metaclass=Singleton):
 
         - **tuple[str, str, str]**
 
-          - Data modality (`"Audio"`, `"Image"`, `"Video"`, `"Text"`, `"File"`)
-          - Logical extension (e.g., `"mp3"`, `"png"`, `"utf8"`, `"bin"`)
-          - MIME type (e.g., `"audio/mpeg"`, `"image/png"`, `"application/octet-stream"`)
+              - Data modality (`"Audio"`, `"Image"`, `"Video"`, `"Text"`, `"File"`)
+              - File extension (e.g., `"mp3"`, `"png"`, `"utf8"`, `"bin"`)
+              - MIME type (e.g., `"audio/mpeg"`, `"image/png"`, `"application/octet-stream"`)
         """
         try:
             with open(file_path, "rb") as file:
