@@ -41,5 +41,5 @@ class UUIDUtils:
     @staticmethod
     def extract_suffix(id_bytes: bytes, suffix_len: int = 4):
         if len(id_bytes) < suffix_len:
-            raise ValueError("Provided bytes shorter than suffix length.")
+            raise ValueError("Provided bytes are shorter than suffix length")
         return id_bytes[:-suffix_len], id_bytes[-suffix_len:]
