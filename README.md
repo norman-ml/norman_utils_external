@@ -6,7 +6,7 @@ Unlike `norman-objects`, this package focuses on **practical helpers and utiliti
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 Norman Utils (External) exists to:
 
@@ -29,12 +29,12 @@ This package is intentionally **thin, stable, and dependency-light**.
 
 If something is:
 
-* **A contract** → it belongs in `norman-objects`
-* **A helper or convenience** → it likely belongs here
+* **A contract** - it belongs in `norman-objects`
+* **A helper or convenience** - it likely belongs here
 
 ---
 
-## 📦 Typical Contents
+## Typical Contents
 
 This package may include:
 
