@@ -16,7 +16,8 @@ class FileUtils(metaclass=Singleton):
             return file_obj.getbuffer().nbytes
         elif hasattr(file_obj, "fileno"):
             return os.fstat(file_obj.fileno()).st_size
-        raise ValueError("Unsupported file object or operation")
+        else:
+            raise ValueError("Unsupported file object or operation")
 
     def get_file_type(self, file_path: str):
         try:
