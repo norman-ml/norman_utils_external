@@ -8,14 +8,14 @@ from cryptography.hazmat.primitives.asymmetric.rsa import RSAPublicNumbers
 
 class KeyUtils:
     @staticmethod
-    def jwks_to_public_key(jwks: list[dict]) -> str:
+    def jwks_to_public_key(jwks: list[dict]):
         jwk = jwks[0]
 
         modulus_bytes = jwk.get("n")
         exponent_bytes = jwk.get("e")
 
-        modulus = int.from_bytes(KeyUtils.decode_base64url(modulus_bytes), byteorder='big')
-        exponent = int.from_bytes(KeyUtils.decode_base64url(exponent_bytes), byteorder='big')
+        modulus = int.from_bytes(KeyUtils.decode_base64url(modulus_bytes), byteorder="big")
+        exponent = int.from_bytes(KeyUtils.decode_base64url(exponent_bytes), byteorder="big")
 
         public_numbers = RSAPublicNumbers(exponent, modulus)
         public_key = public_numbers.public_key(default_backend())
@@ -24,12 +24,12 @@ class KeyUtils:
             encoding=serialization.Encoding.PEM,
             format=serialization.PublicFormat.SubjectPublicKeyInfo
         )
-        pem_public_key = public_key_pem_bytes.decode('utf-8')
+        pem_public_key = public_key_pem_bytes.decode("utf-8")
 
         return pem_public_key
 
     @staticmethod
-    def public_key_to_jwk_list(public_key_pem: str) -> list[dict]:
+    def public_key_to_jwk_list(public_key_pem: str):
         public_key = serialization.load_pem_public_key(public_key_pem.encode())
         public_numbers = public_key.public_numbers()
 
@@ -65,7 +65,7 @@ class KeyUtils:
         return jwk_list
 
     @staticmethod
-    def decode_base64url(data: str) -> bytes:
+    def decode_base64url(data: str):
         padding = 4 - len(data) % 4
         if padding != 4:
             data += '=' * padding
