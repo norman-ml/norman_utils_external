@@ -1,4 +1,3 @@
-
 class SignatureModalityMapping:
 
      Encoding_Map = {
