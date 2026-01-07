@@ -1,12 +1,13 @@
 from typing import Optional, Set
 
+import filetype
+
 from norman_utils_external.sanitization_utils.file_type_categories import FileTypeCategories
-from norman_utils_external.sanitization_utils.file_type_detector import FileTypeDetector
 
 
 class FileSanitizer:
 
-    MIN_BYTES_FOR_DETECTION = FileTypeDetector.MIN_BYTES_FOR_DETECTION
+    MIN_BYTES_FOR_DETECTION = 261
 
     @classmethod
     def sanitize_file_bytes(cls, file_content: bytes, allowed_file_types: Set[str]):
@@ -19,7 +20,8 @@ class FileSanitizer:
                 f"File must be at least {cls.MIN_BYTES_FOR_DETECTION} bytes"
             )
 
-        detected_type = FileTypeDetector.detect(file_content)
+        detected = filetype.guess(file_content)
+        detected_type = detected.extension
 
         if detected_type is None:
             raise ValueError(
