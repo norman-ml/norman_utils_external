@@ -11,7 +11,7 @@ class FileSanitizer:
     @classmethod
     def sanitize(cls, detected_type: str, required_modality: str):
 
-        if SignatureModalityMapping.Encoding_Map(detected_type) != required_modality:
+        if SignatureModalityMapping.Encoding_Map.get(detected_type) != required_modality:
             raise ValueError(
                 "file type is not approved. "
             )
