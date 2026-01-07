@@ -31,5 +31,6 @@ class SignatureModalityMapping:
 
             # File (container level)
             "jit": "File",
-            "pt": "File"
+            "pt": "File",
+            "zip": "File"
         }
