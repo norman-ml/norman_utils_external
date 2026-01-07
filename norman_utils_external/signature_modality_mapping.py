@@ -1,5 +1,4 @@
 class SignatureModalityMapping:
-
      Encoding_Map = {
             # Audio (container level)
             "aac": "Audio",
