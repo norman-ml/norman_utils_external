@@ -27,5 +27,9 @@ class SignatureModalityMapping:
             "mov": "Video",
             "mp4": "Video",
             "ogg": "Video",
-            "webm": "Video"
+            "webm": "Video",
+
+            # File (container level)
+            "jit": "File",
+            "pt": "File"
         }

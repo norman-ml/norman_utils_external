@@ -9,8 +9,15 @@ class FileSanitizer:
     MIN_BYTES_FOR_DETECTION = 261
 
     @classmethod
-    def sanitize_file_bytes(cls, file_content: bytes, required_modality: str):
+    def sanitize(cls, detected_type: str, required_modality: str):
 
+        if SignatureModalityMapping.Encoding_Map(detected_type) != required_modality:
+            raise ValueError(
+                "file type is not approved. "
+            )
+
+    @classmethod
+    def validate_file_bytes(cls, file_content: bytes):
         if len(file_content) < cls.MIN_BYTES_FOR_DETECTION:
             raise ValueError(
                 f"File content too short to validate. "
@@ -26,8 +33,4 @@ class FileSanitizer:
                 "File type could not be determined from magic number"
             )
 
-        if SignatureModalityMapping.Encoding_Map(detected_type) != required_modality:
-            raise ValueError(
-                "file type is not approved. "
-            )
-
+        return detected_type
