@@ -7,8 +7,7 @@ class FileSanitizer(metaclass=Singleton):
     def __init__(self):
         self.__file_utils = FileUtils()
 
-    def sanitize(self, file_content: bytes, required_modality: str):
-        file_extension = self.__get_file_extension(file_content)
+    def sanitize(self, file_extension: str, required_modality: str):
         if file_extension not in SignatureModalityMapping.Encoding_Map:
             raise ValueError("File type is not supported.")
 
@@ -16,6 +15,3 @@ class FileSanitizer(metaclass=Singleton):
         if data_modality != required_modality:
             raise ValueError("File modality does not match the expected modality.")
 
-    def __get_file_extension(self, file_content: bytes):
-        file_type = self.__file_utils.get_file_type_from_header(file_content)
-        return file_type["data_encoding"]
