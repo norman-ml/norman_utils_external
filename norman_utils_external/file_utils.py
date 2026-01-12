@@ -34,12 +34,9 @@ class FileUtils(metaclass=Singleton):
                 "file_extension": "bin",
                 "Content-Type": "application/octet-stream"
             }
-        return self.__get_file_type_from_header(header)
+        return self.get_file_type_from_header(header)
 
-    def get_file_type_from_bytes(self, content: bytes):
-        return self.__get_file_type_from_header(content)
-
-    def __get_file_type_from_header(self, header: bytes):
+    def get_file_type_from_header(self, header: bytes):
         hex_header = header.hex()
 
         # Audio (alphabetical: aac, ac3, flac, mp3, opus, vorbis, wav)
