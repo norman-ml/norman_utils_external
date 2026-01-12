@@ -13,8 +13,7 @@ authors = [
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
 dependencies = [
-    "cryptography==45.0.7",
-    "filetype==1.2.0",
+    "cryptography==45.0.7"
 ]
 
 [tools.setuptools]
