@@ -4,90 +4,60 @@ class EncodingMapper:
             "aac": {
                 "audio": {
                     "aac": {
-                        "flt",
-                        "fltp",
-                        "s16",
-                        "s16p",
-                        "s32",
-                        "s32p"
-                    },
-                    "aac_lc": {
-                        "flt",
-                        "fltp",
-                        "s16",
-                        "s16p",
-                        "s32",
-                        "s32p"
-                    },
-                    "aac_he": {
-                        "flt",
-                        "fltp",
-                        "s16",
-                        "s16p"
-                    }
-                }
-            },
-            "ac3": {
-                "audio": {
-                    "ac3": {
-                        "s16",
-                        "s16p",
-                        "s32",
-                        "s32p"
+                        "fltp"
                     }
                 }
             },
             "flac": {
                 "audio": {
                     "flac": {
-                        "flt",
                         "s16",
-                        "s24",
                         "s32"
                     }
                 }
             },
-            "opus": {
+            "ogg": {
                 "audio": {
+                    "flac": {
+                        "s16",
+                        "s32"
+                    },
                     "opus": {
                         "flt",
-                        "fltp",
                         "s16"
-                    }
+                    },
+                    "vorbis": {
+                        "fltp"
+                    },
                 }
             },
             "mp3": {
                 "audio": {
                     "mp3": {
-                        "flt",
                         "fltp",
-                        "s16",
-                        "s16p"
+                        "s16p",
+                        "s32p"
                     },
                     "mp3_vbr": {
-                        "flt",
                         "fltp",
-                        "s16",
                         "s16p",
-                    }
-                }
-            },
-            "vorbis": {
-                "audio": {
-                    "vorbis": {
-                        "flt",
-                        "fltp",
-                        "s16"
+                        "s32p"
                     }
                 }
             },
             "wav": {
                 "audio": {
-                    "pcm": {
-                        "pcm_f32le",
-                        "pcm_s16le",
-                        "pcm_s24le",
-                        "pcm_s32le"
+                    "pcm_f32le": {
+                        "flt"
+                    },
+                    "pcm_s16le": {
+                        "s16"
+                    },
+                    "pcm_s24le": {
+                        "s32" # FFmpeg uses 32-bit samples to represent 24-bit PCM
+                    },
+                    "pcm_s32le": {
+                        "s32"
                     }
                 }
             }
@@ -111,17 +81,24 @@ class EncodingMapper:
             },
             "png": {
                 "image": {
+                    "gray": {
+                        "gray8",
+                        "gray16"
+                    },
+                    "graya": {
+                        "ya8",
+                        "ya16"
+                    },
                     "indexed": {
                         "palette8"
                     },
-                    "gray": {
-                        "gray8"
-                    },
                     "rgb": {
-                        "rgb8"
+                        "rgba8",
+                        "rgb16"
                     },
                     "rgba": {
-                        "rgba8"
+                        "rgba8",
+                        "rgb16"
                     }
                 }
             },
@@ -141,6 +118,9 @@ class EncodingMapper:
                     # lossy
                     "yuv420": {
                         "yuv420p"
+                    },
+                    "yuva420": {
+                        "yuva420p"
                     }
                 }
             }
@@ -148,111 +128,71 @@ class EncodingMapper:
         "text": {
             "txt": {
                 "text": {
-                    "utf8": {},
-                    "utf16": {}
+                    "utf8": {
+                        "u8"
+                    },
+                    "utf16": {
+                        "u16be",
+                        "u16le"
+                    }
                 }
             },
             "pdf": {
                 "text": {
-                    "utf8": {},
-                    "utf16": {}
+                    "utf8": {
+                        "u8"
+                    },
+                    "utf16": {
+                        "u16be",
+                        "u16le"
+                    }
                 }
             },
             "docx": {
                 "text": {
-                    "utf8": {},
-                    "utf16": {}
-                }
-            },
-            "rtf": {
-                "text": {
-                    "utf8": {},
-                    "utf16": {}
+                    "utf8": {
+                        "u8"
+                    },
+                    "utf16": {
+                        "u16be",
+                        "u16le"
+                    }
                 }
             }
         },
         "video": {
-            "avi": {
-                "audio": {
-                    "ac3": {
-                        "s16",
-                        "s16p"
-                    },
-                    "mp3": {
-                        "s16",
-                        "s16p"
-                    },
-                    "pcm_s16le": {
-                        "s16"
-                    }
-                },
-                "text": {},
-                "video": {
-                    "cinepak": {
-                        "rgb8"
-                    },
-                    "h264": {
-                        "yuv420p"
-                    },
-                    "dv": {
-                        "yuv420p"
-                    },
-                    "motion-jpeg": {
-                        "yuv420p",
-                        "rgb8"
-                    },
-                    "mpeg4": {
-                        "yuv420p"
-                    },
-                }
-            },
-            "matroska": {
+            "mkv": {
                 "audio": {
                     "aac": {
-                        "flt",
-                        "fltp",
-                        "s16",
-                        "s16p",
-                        "s32"
-                    },
-                    "aac_he": {
-                        "flt",
-                        "fltp",
-                        "s16"
-                    },
-                    "ac3": {
-                        "s16",
-                        "s16p",
-                        "s32",
-                        "s32p"
+                         "fltp"
                     },
                     "flac": {
-                        "flt",
                         "s16",
-                        "s24",
                         "s32"
                     },
                     "mp3": {
-                        "flt",
                         "fltp",
-                        "s16",
-                        "s16p"
+                        "s16p",
+                        "s32p"
                     },
                     "opus": {
                         "flt",
-                        "fltp",
                         "s16"
+                    },
+                    "pcm_f32le": {
+                        "flt"
                     },
                     "pcm_s16le": {
                         "s16"
                     },
                     "pcm_s24le": {
-                        "s24"
+                        "s32"  # FFmpeg uses 32-bit samples to represent 24-bit PCM
+                    },
+                    "pcm_s32le": {
+                        "s32"
                     },
                     "vorbis": {
-                        "flt",
-                        "fltp",
-                        "s16"
+                        "fltp"
                     }
                 },
                 "text": {
@@ -268,22 +208,26 @@ class EncodingMapper:
                 },
                 "video": {
                     "av1": {
-                        "rgb8",
+                        "yuv420p",
+                        "yuv444p"
+                    },
+                    "ffv1": {
+                        "gbrp",
+                        "yuv420p",
+                        "yuv422p",
+                        "yuv444p"
+                    },
+                    "h264": {
+                        "yuv420p",
+                        "yuv444p"
+                    },
+                    "h265": {
+                        "gbrp",
                         "yuv420p",
                         "yuv444p"
                     },
                     "vp8": {
                         "yuv420p"
-                    },
-                    "h264": {
-                        "rgb8",
-                        "yuv420p",
-                        "yuv444p"
-                    },
-                    "h265": {
-                        "rgb8",
-                        "yuv420p",
-                        "yuv444p"
                     },
                     "vp9": {
                         "yuv420p"
@@ -293,181 +237,156 @@ class EncodingMapper:
             "mov": {
                 "audio": {
                     "aac": {
-                        "flt",
-                        "fltp",
-                        "s16",
-                        "s16p",
-                        "s32"
-                    },
-                    "aac_he": {
-                        "flt",
-                        "fltp",
-                        "s16"
+                        "fltp"
                     },
                     "alac": {
                         "s16",
-                        "s24",
                         "s32"
                     },
                     "mp3": {
-                        "flt",
                         "fltp",
-                        "s16",
-                        "s16p"
+                        "s16p",
+                        "s32p"
+                    },
+                    "pcm_f32le": {
+                        "flt"
                     },
                     "pcm_s16le": {
                         "s16"
-                    }
+                    },
+                    "pcm_s24le": {
+                        "s32"  # FFmpeg uses 32-bit samples to represent 24-bit PCM
+                    },
+                    "pcm_s32le": {
+                        "s32"
+                    },
                 },
                 "text": {
-                    "ass": {
-                        "utf8"
-                    },
-                    "srt": {
-                        "utf8"
-                    },
-                    "vtt": {
+                     "mov_text": {
                         "utf8"
                     }
                 },
                 "video": {
-                    "av1": {
-                        "rgb8",
-                        "yuv420p",
-                        "yuv444p"
-                    },
-                    "cinepak": {
-                        "rgb8"
-                    },
-                    "dv": {
-                        "yuv420p"
-                    },
                     "h264": {
-                        "rgb8",
+                        "nv12",
+                        "nv16",
+                        "nv21",
                         "yuv420p",
-                        "yuv444p"
+                        "yuv422p",
+                        "yuv444p",
+                        "yuvj420p",
+                        "yuvj422p",
+                        "yuvj444p"
                     },
                     "h265": {
-                        "rgb8",
+                        "gbrp",
+                        "gbrp10le",
+                        "gray",
+                        "gray10le",
                         "yuv420p",
-                        "yuv444p"
+                        "yuv420p10le",
+                        "yuv422p",
+                        "yuv422p10le",
+                        "yuv444p",
+                        "yuv444p10le"
                     },
                     "motion-jpeg": {
-                        "rgb8",
-                        "yuv420p"
+                        "yuv420p",
+                        "yuv422p",
+                        "yuv444p",
+                        "yuvj420p",
+                        "yuvj422p",
+                        "yuvj444p"
                     },
+                    "prores": {
+                        "yuv422p10le",
+                        "yuv444p10le",
+                        "yuva444p10le"
+                    }
                 }
             },
             "mp4": {
                 "audio": {
                     "aac": {
-                        "flt",
-                        "fltp",
-                        "s16",
+                        "fltp"
+                    },
+                    "alac": {
                         "s16p",
-                        "s32",
                         "s32p"
                     },
-                    "aac_he": {
-                        "flt",
-                        "fltp",
-                        "s16",
-                        "s16p"
-                    },
                     "flac": {
-                        "flt",
                         "s16",
-                        "s24",
                         "s32"
                     },
                     "mp3": {
-                        "flt",
                         "fltp",
-                        "s16",
-                        "s16p"
+                        "s16p",
+                        "s32p"
                     },
                     "opus": {
                         "flt",
-                        "fltp",
                         "s16"
-                    }
+                    },
+                    "vorbis": {
+                        "fltp"
+                    },
                 },
                 "text": {
-                    "ass": {
-                        "utf8"
-                    },
-                    "srt": {
-                        "utf8"
-                    },
-                    "vtt": {
+                    "mov_text": {
                         "utf8"
                     }
                 },
                 "video": {
                     "av1": {
-                        "rgb8",
+                        "gbrp",
                         "yuv420p",
                         "yuv444p"
                     },
                     "h264": {
-                        "rgb8",
-                        "yuv420p",
-                        "yuv444p"
+                        "yuv420p"
                     },
                     "h265": {
-                        "rgb8",
+                        "gbrp",
                         "yuv420p",
                         "yuv444p"
-                    },
-                    "vp9": {
-                        "yuv420p"
                     }
                 }
             },
             "ogg": {
                 "audio": {
                     "flac": {
-                        "flt", 
-                        "s16", 
-                        "s24", 
+                        "s16",
                         "s32"
                     },
                     "opus": {
-                        "flt", 
-                        "fltp", 
+                        "flt",
                         "s16"
                     },
                     "vorbis": {
-                        "flt", 
-                        "fltp", 
-                        "s16"
+                        "fltp"
                     }
                 },
                 "text": {
-                    "vtt": {
+                    "kate": {
                         "utf8"
                     }
                 },
                 "video": {
-                    "vp8": {
-                        "yuv420p"
-                    },
-                    "vp9": {
-                        "yuv420p"
+                    "theora": {
+                        "yuv420p",
+                        "yuv422p",
+                        "yuv444p"
                     }
                 },
             },
             "webm": {
                 "audio": {
                     "opus": {
-                        "flt", 
-                        "fltp", 
+                        "flt",
                         "s16"
                     },
                     "vorbis": {
-                        "flt", 
-                        "fltp", 
-                        "s16"
+                        "fltp"
                     }
                 },
                 "text": {
@@ -480,10 +399,12 @@ class EncodingMapper:
                         "yuv420p"
                     },
                     "vp8": {
-                        "yuv420p"
+                        "yuv420p",
+                        "yuva420p"
                     },
                     "vp9": {
-                        "yuv420p"
+                        "yuv420p",
+                        "yuva420p"
                     }
                 }
             }
