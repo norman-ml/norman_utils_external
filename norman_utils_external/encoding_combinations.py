@@ -1,4 +1,4 @@
-class EncodingMapper:
+class EncodingCombinations:
     Encoding_Map = {
         "audio": {
             "aac": {
@@ -16,6 +16,20 @@ class EncodingMapper:
                     }
                 }
             },
+            "mp3": {
+                "audio": {
+                    "mp3": {
+                        "fltp",
+                        "s16p",
+                        "s32p"
+                    },
+                    "mp3_vbr": {
+                        "fltp",
+                        "s16p",
+                        "s32p"
+                    }
+                }
+            },
             "ogg": {
                 "audio": {
                     "flac": {
@@ -29,20 +43,6 @@ class EncodingMapper:
                     "vorbis": {
                         "fltp"
                     },
-                }
-            },
-            "mp3": {
-                "audio": {
-                    "mp3": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
-                    },
-                    "mp3_vbr": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
-                    }
                 }
             },
             "wav": {
@@ -126,7 +126,7 @@ class EncodingMapper:
             }
         },
         "text": {
-            "txt": {
+            "docx": {
                 "text": {
                     "utf8": {
                         "u8"
@@ -148,7 +148,7 @@ class EncodingMapper:
                     }
                 }
             },
-            "docx": {
+            "txt": {
                 "text": {
                     "utf8": {
                         "u8"
