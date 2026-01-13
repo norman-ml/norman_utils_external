@@ -3,467 +3,488 @@ class EncodingMapper:
         "audio": {
             "aac": {
                 "audio": {
-                    "aac": [
+                    "aac": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p",
                         "s32",
                         "s32p"
-                    ],
-                    "aac_lc": [
+                    },
+                    "aac_lc": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p",
                         "s32",
                         "s32p"
-                    ],
-                    "aac_he": [
+                    },
+                    "aac_he": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p"
-                    ]
+                    }
                 }
             },
             "ac3": {
                 "audio": {
-                    "ac3": [
+                    "ac3": {
                         "s16",
                         "s16p",
                         "s32",
                         "s32p"
-                    ]
+                    }
                 }
             },
             "flac": {
                 "audio": {
-                    "flac": [
+                    "flac": {
                         "flt",
                         "s16",
                         "s24",
                         "s32"
-                    ]
+                    }
                 }
             },
             "opus": {
                 "audio": {
-                    "opus": [
+                    "opus": {
                         "flt",
                         "fltp",
                         "s16"
-                    ]
+                    }
                 }
             },
             "mp3": {
                 "audio": {
-                    "mp3": [
+                    "mp3": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p"
-                    ],
-                    "mp3_vbr": [
+                    },
+                    "mp3_vbr": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p",
-                    ]
+                    }
                 }
             },
             "vorbis": {
                 "audio": {
-                    "vorbis": [
+                    "vorbis": {
                         "flt",
                         "fltp",
                         "s16"
-                    ]
+                    }
                 }
             },
             "wav": {
                 "audio": {
-                    "pcm": [
+                    "pcm": {
                         "pcm_f32le",
                         "pcm_s16le",
                         "pcm_s24le",
                         "pcm_s32le"
-                    ]
+                    }
                 }
             }
         },
         "image": {
             "jpg": {
                 "image": {
-                    "gray": [
+                    "gray": {
                         "gray8"
-                    ],
-                    "rgb": [
+                    },
+                    "rgb": {
                         "rgb8"
-                    ],
-                    "yuv420": [
+                    },
+                    "yuv420": {
                         "yuv420p"
-                    ],
-                    "yuv444": [
+                    },
+                    "yuv444": {
                         "yuv444p"
-                    ]
+                    }
                 }
             },
             "png": {
                 "image": {
-                    "indexed": [
+                    "indexed": {
                         "palette8"
-                    ],
-                    "gray": [
+                    },
+                    "gray": {
                         "gray8"
-                    ],
-                    "rgb": [
+                    },
+                    "rgb": {
                         "rgb8"
-                    ],
-                    "rgba": [
+                    },
+                    "rgba": {
                         "rgba8"
-                    ]
+                    }
                 }
             },
             "webp": {
                 "image": {
-                    "gray": [
+                    "gray": {
                         "gray8"
-                    ],
+                    },
                     # lossless
-                    "rgb": [
+                    "rgb": {
                         "rgb8"
-                    ],
+                    },
                     # lossless + alpha
-                    "rgba": [
+                    "rgba": {
                         "rgba8"
-                    ],
+                    },
                     # lossy
-                    "yuv420": [
+                    "yuv420": {
                         "yuv420p"
-                    ]
+                    }
                 }
             }
         },
         "text": {
             "txt": {
                 "text": {
-                    "utf8": [],
-                    "utf16": []
+                    "utf8": {},
+                    "utf16": {}
                 }
             },
             "pdf": {
                 "text": {
-                    "utf8": [],
-                    "utf16": []
+                    "utf8": {},
+                    "utf16": {}
                 }
             },
             "docx": {
                 "text": {
-                    "utf8": [],
-                    "utf16": []
+                    "utf8": {},
+                    "utf16": {}
                 }
             },
             "rtf": {
                 "text": {
-                    "utf8": [],
-                    "utf16": []
+                    "utf8": {},
+                    "utf16": {}
                 }
             }
         },
         "video": {
             "avi": {
                 "audio": {
-                    "ac3": [
+                    "ac3": {
                         "s16",
                         "s16p"
-                    ],
-                    "mp3": [
+                    },
+                    "mp3": {
                         "s16",
                         "s16p"
-                    ],
-                    "pcm_s16le": [
+                    },
+                    "pcm_s16le": {
                         "s16"
-                    ]
+                    }
                 },
                 "text": {},
                 "video": {
-                    "cinepak": [
+                    "cinepak": {
                         "rgb8"
-                    ],
-                    "h264": [
+                    },
+                    "h264": {
                         "yuv420p"
-                    ],
-                    "dv": [
+                    },
+                    "dv": {
                         "yuv420p"
-                    ],
-                    "motion-jpeg": [
+                    },
+                    "motion-jpeg": {
                         "yuv420p",
                         "rgb8"
-                    ],
-                    "mpeg4": [
+                    },
+                    "mpeg4": {
                         "yuv420p"
-                    ],
+                    },
                 }
             },
             "matroska": {
                 "audio": {
-                    "aac": [
+                    "aac": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p",
                         "s32"
-                    ],
-                    "aac_he": [
+                    },
+                    "aac_he": {
                         "flt",
                         "fltp",
                         "s16"
-                    ],
-                    "ac3": [
+                    },
+                    "ac3": {
                         "s16",
                         "s16p",
                         "s32",
                         "s32p"
-                    ],
-                    "flac": [
+                    },
+                    "flac": {
                         "flt",
                         "s16",
                         "s24",
                         "s32"
-                    ],
-                    "mp3": [
+                    },
+                    "mp3": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p"
-                    ],
-                    "opus": [
+                    },
+                    "opus": {
                         "flt",
                         "fltp",
                         "s16"
-                    ],
-                    "pcm_s16le": [
+                    },
+                    "pcm_s16le": {
                         "s16"
-                    ],
-                    "pcm_s24le": [
+                    },
+                    "pcm_s24le": {
                         "s24"
-                    ],
-                    "vorbis": [
+                    },
+                    "vorbis": {
                         "flt",
                         "fltp",
                         "s16"
-                    ]
+                    }
                 },
                 "text": {
-                    "ass": [
+                    "ass": {
                         "utf8"
-                    ],
-                    "srt": [
+                    },
+                    "srt": {
                         "utf8"
-                    ],
-                    "vtt": [
+                    },
+                    "vtt": {
                         "utf8"
-                    ]
+                    }
                 },
                 "video": {
-                    "av1": [
+                    "av1": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "vp8": [
+                    },
+                    "vp8": {
                         "yuv420p"
-                    ],
-                    "h264": [
+                    },
+                    "h264": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "h265": [
+                    },
+                    "h265": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "vp9": [
+                    },
+                    "vp9": {
                         "yuv420p"
-                    ]
+                    }
                 }
             },
             "mov": {
                 "audio": {
-                    "aac": [
+                    "aac": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p",
                         "s32"
-                    ],
-                    "aac_he": [
+                    },
+                    "aac_he": {
                         "flt",
                         "fltp",
                         "s16"
-                    ],
-                    "alac": [
+                    },
+                    "alac": {
                         "s16",
                         "s24",
                         "s32"
-                    ],
-                    "mp3": [
+                    },
+                    "mp3": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p"
-                    ],
-                    "pcm_s16le": [
+                    },
+                    "pcm_s16le": {
                         "s16"
-                    ]
+                    }
                 },
                 "text": {
-                    "ass": [
+                    "ass": {
                         "utf8"
-                    ],
-                    "srt": [
+                    },
+                    "srt": {
                         "utf8"
-                    ],
-                    "vtt": [
+                    },
+                    "vtt": {
                         "utf8"
-                    ]
+                    }
                 },
                 "video": {
-                    "av1": [
+                    "av1": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "cinepak": [
+                    },
+                    "cinepak": {
                         "rgb8"
-                    ],
-                    "dv": [
+                    },
+                    "dv": {
                         "yuv420p"
-                    ],
-                    "h264": [
+                    },
+                    "h264": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "h265": [
+                    },
+                    "h265": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "motion-jpeg": [
+                    },
+                    "motion-jpeg": {
                         "rgb8",
                         "yuv420p"
-                    ],
+                    },
                 }
             },
             "mp4": {
                 "audio": {
-                    "aac": [
+                    "aac": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p",
                         "s32",
                         "s32p"
-                    ],
-                    "aac_he": [
+                    },
+                    "aac_he": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p"
-                    ],
-                    "flac": [
+                    },
+                    "flac": {
                         "flt",
                         "s16",
                         "s24",
                         "s32"
-                    ],
-                    "mp3": [
+                    },
+                    "mp3": {
                         "flt",
                         "fltp",
                         "s16",
                         "s16p"
-                    ],
-                    "opus": [
+                    },
+                    "opus": {
                         "flt",
                         "fltp",
                         "s16"
-                    ]
+                    }
                 },
                 "text": {
-                    "ass": [
+                    "ass": {
                         "utf8"
-                    ],
-                    "srt": [
+                    },
+                    "srt": {
                         "utf8"
-                    ],
-                    "vtt": [
+                    },
+                    "vtt": {
                         "utf8"
-                    ]
+                    }
                 },
                 "video": {
-                    "av1": [
+                    "av1": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "h264": [
+                    },
+                    "h264": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "h265": [
+                    },
+                    "h265": {
                         "rgb8",
                         "yuv420p",
                         "yuv444p"
-                    ],
-                    "vp9": [
+                    },
+                    "vp9": {
                         "yuv420p"
-                    ]
+                    }
                 }
             },
             "ogg": {
                 "audio": {
-                    "flac": ["flt", "s16", "s24", "s32"],
-                    "opus": ["flt", "fltp", "s16"],
-                    "vorbis": ["flt", "fltp", "s16"]
+                    "flac": {
+                        "flt", 
+                        "s16", 
+                        "s24", 
+                        "s32"
+                    },
+                    "opus": {
+                        "flt", 
+                        "fltp", 
+                        "s16"
+                    },
+                    "vorbis": {
+                        "flt", 
+                        "fltp", 
+                        "s16"
+                    }
                 },
                 "text": {
-                    "vtt": [
+                    "vtt": {
                         "utf8"
-                    ]
+                    }
                 },
                 "video": {
-                    "vp8": [
+                    "vp8": {
                         "yuv420p"
-                    ],
-                    "vp9": [
+                    },
+                    "vp9": {
                         "yuv420p"
-                    ]
+                    }
                 },
             },
             "webm": {
                 "audio": {
-                    "opus": ["flt", "fltp", "s16"],
-                    "vorbis": ["flt", "fltp", "s16"]
+                    "opus": {
+                        "flt", 
+                        "fltp", 
+                        "s16"
+                    },
+                    "vorbis": {
+                        "flt", 
+                        "fltp", 
+                        "s16"
+                    }
                 },
                 "text": {
-                    "vtt": [
+                    "vtt": {
                         "utf8"
-                    ]
+                    }
                 },
                 "video": {
-                    "av1": [
+                    "av1": {
                         "yuv420p"
-                    ],
-                    "vp8": [
+                    },
+                    "vp8": {
                         "yuv420p"
-                    ],
-                    "vp9": [
+                    },
+                    "vp9": {
                         "yuv420p"
-                    ]
+                    }
                 }
             }
         }
