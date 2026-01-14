@@ -79,7 +79,7 @@ class FileUtils(metaclass=Singleton):
 
         # File (zip-based formats: jit, pt, zip - all return bin)
         elif hex_header.startswith("504b0304"):  # `.pt` files have a zip header
-            data_modality, data_encoding, mime_type, file_extension = "File", "bin", "application/octet-stream", "bin"
+            data_modality, data_encoding, mime_type, file_extension = "File", "zip", "application/octet-stream", "zip"
 
         # Text (must be last - uses fallback decode detection)
         elif self.__is_utf16(header):
