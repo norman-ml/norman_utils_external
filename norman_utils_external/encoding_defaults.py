@@ -12,35 +12,35 @@ class EncodingDefaults:
                 "audio": {
                     "channel": "aac",
                     "sample": "fltp",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "flac": {
                 "audio": {
                     "channel": "flac",
                     "sample": "s16",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "mp3": {
                 "audio": {
                     "channel": "mp3",
                     "sample": "fltp",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "ogg": {
                 "audio": {
                     "channel": "opus",
                     "sample": "flt",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "wav": {
                 "audio": {
                     "channel": "pcm_s16le",
                     "sample": "s16",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             }
         },
@@ -49,21 +49,21 @@ class EncodingDefaults:
                 "image": {
                     "channel": "RGB",
                     "sample": "",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "png": {
                 "image": {
                     "channel": "RGBA",
                     "sample": "",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "webp": {
                 "image": {
                     "channel": "RGB",
                     "sample": "",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             }
         },
@@ -72,21 +72,21 @@ class EncodingDefaults:
                 "text": {
                     "channel": "utf8",
                     "sample": "u8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 }
             },
             "pdf": {
                 "text": {
                     "channel": "utf8",
                     "sample": "u8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 }
             },
             "txt": {
                 "text": {
                     "channel": "utf8",
                     "sample": "u8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 }
             }
         },
@@ -95,85 +95,85 @@ class EncodingDefaults:
                 "audio": {
                     "channel": "opus",
                     "sample": "flt",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 },
                 "text": {
                     "channel": "srt",
                     "sample": "utf8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 },
                 "video": {
                     "channel": "h264",
                     "sample": "yuv420p",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "mov": {
                 "audio": {
                     "channel": "aac",
                     "sample": "fltp",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 },
                 "text": {
                     "channel": "mov_text",
                     "sample": "utf8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 },
                 "video": {
                     "channel": "h264",
                     "sample": "yuv420p",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "mp4": {
                 "audio": {
                     "channel": "aac",
                     "sample": "fltp",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 },
                 "text": {
                     "channel": "mov_text",
                     "sample": "utf8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 },
                 "video": {
                     "channel": "h264",
                     "sample": "yuv420p",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "ogg": {
                 "audio": {
                     "channel": "opus",
                     "sample": "flt",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 },
                 "text": {
                     "channel": "kate",
                     "sample": "utf8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 },
                 "video": {
                     "channel": "theora",
                     "sample": "yuv420p",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             },
             "webm": {
                 "audio": {
                     "channel": "opus",
                     "sample": "flt",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 },
                 "text": {
                     "channel": "vtt",
                     "sample": "utf8",
-                    "tensor": "torch.int64"
+                    "tensor": "int64"
                 },
                 "video": {
                     "channel": "vp9",
                     "sample": "yuv420p",
-                    "tensor": "torch.float32"
+                    "tensor": "float32"
                 }
             }
         }
