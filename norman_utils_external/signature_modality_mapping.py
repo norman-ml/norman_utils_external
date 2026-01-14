@@ -30,7 +30,7 @@ class SignatureModalityMapping:
 
             # File (container level)
             "bin": "File",
+            "jit": "File",
             "pt": "File",
-            "zip": "File",
-            "jit": "File"
+            "zip": "File"
         }
