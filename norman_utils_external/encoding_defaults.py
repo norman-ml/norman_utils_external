@@ -1,12 +1,12 @@
 class EncodingDefaults:
-    Container_Encodings = {
+    Container_Map = {
         "audio": "mp3",
         "image": "jpg",
         "text": "txt",
         "video": "mp4"
     }
 
-    Channel_Encodings = {
+    Channel_Map = {
         "audio": {
             "aac": {
                 "audio": {

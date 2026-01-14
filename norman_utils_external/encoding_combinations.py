@@ -1,5 +1,5 @@
 class EncodingCombinations:
-    Encoding_Map = {
+    Combinations_Map = {
         "audio": {
             "aac": {
                 "audio": {

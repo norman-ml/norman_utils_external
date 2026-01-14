@@ -1,5 +1,5 @@
 class EncodingArguments:
-    Encoding_Map = {
+    Arguments_Map = {
         "audio": {
             "aac": {
                 "audio": {
