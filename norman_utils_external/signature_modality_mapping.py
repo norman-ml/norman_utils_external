@@ -29,6 +29,7 @@ class SignatureModalityMapping:
             "webm": "Video",
 
             # File (container level)
+            "bin": "File",
             "jit": "File",
             "pt": "File",
             "zip": "File"
