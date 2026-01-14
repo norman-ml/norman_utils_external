@@ -47,22 +47,22 @@ class EncodingDefaults:
         "image": {
             "jpg": {
                 "image": {
-                    "channel": "rgb",
-                    "sample": "rgb8",
+                    "channel": "RGB",
+                    "sample": "",
                     "tensor": "torch.float32"
                 }
             },
             "png": {
                 "image": {
-                    "channel": "rgb",
-                    "sample": "rgba8",
+                    "channel": "RGBA",
+                    "sample": "",
                     "tensor": "torch.float32"
                 }
             },
             "webp": {
                 "image": {
-                    "channel": "rgb",
-                    "sample": "rgb8",
+                    "channel": "RGB",
+                    "sample": "",
                     "tensor": "torch.float32"
                 }
             }

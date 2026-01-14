@@ -65,63 +65,25 @@ class EncodingCombinations:
         "image": {
             "jpg": {
                 "image": {
-                    "gray": {
-                        "gray8"
-                    },
-                    "rgb": {
-                        "rgb8"
-                    },
-                    "yuv420": {
-                        "yuv420p"
-                    },
-                    "yuv444": {
-                        "yuv444p"
-                    }
+                    "CMYK": {},
+                    "L": {},
+                    "RGB": {},
+                    "YCbCr": {}
                 }
             },
             "png": {
                 "image": {
-                    "gray": {
-                        "gray8",
-                        "gray16"
-                    },
-                    "graya": {
-                        "ya8",
-                        "ya16"
-                    },
-                    "indexed": {
-                        "palette8"
-                    },
-                    "rgb": {
-                        "rgba8",
-                        "rgb16"
-                    },
-                    "rgba": {
-                        "rgba8",
-                        "rgb16"
-                    }
+                    "1": {},
+                    "L": {},
+                    "P": {},
+                    "RGB": {},
+                    "RGBA": {}
                 }
             },
             "webp": {
                 "image": {
-                    "gray": {
-                        "gray8"
-                    },
-                    # lossless
-                    "rgb": {
-                        "rgb8"
-                    },
-                    # lossless + alpha
-                    "rgba": {
-                        "rgba8"
-                    },
-                    # lossy
-                    "yuv420": {
-                        "yuv420p"
-                    },
-                    "yuva420": {
-                        "yuva420p"
-                    }
+                    "RGB": {},
+                    "RGBA": {}
                 }
             }
         },
@@ -290,7 +252,7 @@ class EncodingCombinations:
                         "yuv444p",
                         "yuv444p10le"
                     },
-                    "motion-jpeg": {
+                    "mjpeg": {
                         "yuv420p",
                         "yuv422p",
                         "yuv444p",
@@ -298,7 +260,7 @@ class EncodingCombinations:
                         "yuvj422p",
                         "yuvj444p"
                     },
-                    "prores": {
+                    "prores_ks": {
                         "yuv422p10le",
                         "yuv444p10le",
                         "yuva444p10le"
@@ -314,22 +276,11 @@ class EncodingCombinations:
                         "s16p",
                         "s32p"
                     },
-                    "flac": {
-                        "s16",
-                        "s32"
-                    },
                     "mp3": {
                         "fltp",
                         "s16p",
                         "s32p"
-                    },
-                    "opus": {
-                        "flt",
-                        "s16"
-                    },
-                    "vorbis": {
-                        "fltp"
-                    },
+                    }
                 },
                 "text": {
                     "mov_text": {
