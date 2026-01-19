@@ -31,3 +31,8 @@ class UUIDUtils:
     @staticmethod
     def str_id_to_bytes(id_str: str):
         return UUIDUtils.int_to_bytes(int(id_str))
+
+    @staticmethod
+    def generate_id():
+        id_bytes = UUIDUtils.optimized_unique_id()
+        return UUIDUtils.bytes_to_str_id(id_bytes)
