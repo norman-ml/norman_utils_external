@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools==67.6.0"]
-build-backend = "setuptools.build_meta"
+requires = ["flit_core==3.12.0"]
+build-backend = "flit_core.buildapi"
 
 [project]
 name = "norman-utils-external"
@@ -16,5 +16,5 @@ dependencies = [
     "cryptography==45.0.7"
 ]
 
-[tools.setuptools]
-packages = ["norman_utils_external"]
+[tool.flit.module]
+name = "norman_utils_external"
