@@ -3,178 +3,599 @@ class EncodingArguments:
         "audio": {
             "aac": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 128000,
-                    "channels": 1,
-                    "frame_size": 1024,
-                    "sample_rate": 48000
+                    "aac": {
+                        "bit_depth": 32,
+                        "bit_rate": 128000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    }
                 }
             },
             "flac": {
                 "audio": {
-                    "bit_depth": 16,
-                    "channels": 2,
-                    "compression_level": 5,
-                    "frame_size": 4096,
-                    "sample_rate": 48000
+                    "flac": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "compression_level": 5,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000
+                    }
                 }
             },
             "mp3": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 128000,
-                    "channels": 2,
-                    "frame_size": 1152,
-                    "sample_rate": 48000
+                    "mp3": {
+                        "bit_depth": 32,
+                        "bit_rate": 192000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1152,
+                        "sample_rate": 44100
+                    },
+                    "mp3_vbr": {
+                        "bit_depth": 32,
+                        "bit_rate": 192000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1152,
+                        "sample_rate": 44100
+                    }
                 }
             },
             "ogg": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 96000,
-                    "channels": 2,
-                    "frame_size": 960,
-                    "sample_rate": 48000
+                    "flac": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "compression_level": 5,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000
+                    },
+                    "opus": {
+                        "bit_depth": 32,
+                        "bit_rate": 96000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 960,
+                        "sample_rate": 48000
+                    },
+                    "vorbis": {
+                        "bit_depth": 32,
+                        "bit_rate": 112000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 44100
+                    },
                 }
             },
             "wav": {
                 "audio": {
-                    "bit_depth": 16,
-                    "channels": 2,
-                    "frame_size": 1024,
-                    "sample_rate": 48000
+                    "pcm_f32le": {
+                        "bit_depth": 32,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s16le": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s24le": {
+                        "bit_depth": 24, # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory, but writes 24 bits (3 bytes) to disk per sample
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s32le": {
+                        "bit_depth": 32,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    }
                 }
-            },
+            }
         },
         "image": {
             "jpg": {
                 "image": {
-                    "bit_depth": 8,
-                    "channels": 3
+                    "CMYK": {
+                        "bit_depth": 8,
+                        "channels": 4,
+                        "quality": 75
+                    },
+                    "L": {
+                        "bit_depth": 8,
+                        "channels": 1,
+                        "quality": 75
+                    },
+                    "RGB": {
+                        "bit_depth": 8,
+                        "channels": 3,
+                        "quality": 75
+                    },
+                    "YCbCr": {
+                        "bit_depth": 8,
+                        "channels": 3,
+                        "quality": 75
+                    }
                 }
             },
             "png": {
                 "image": {
-                    "bit_depth": 8,
-                    "channels": 4
+                    "1": {
+                        "bit_depth": 1,
+                        "channels": 1,
+                        "compression_level": 6
+                    },
+                    "L": {
+                        "bit_depth": 8,
+                        "channels": 1,
+                        "compression_level": 6
+                    },
+                    "P": {
+                        "bit_depth": 8,
+                        "channels": 1,
+                        "compression_level": 6
+                    },
+                    "RGB": {
+                        "bit_depth": 8,
+                        "channels": 3,
+                        "compression_level": 6
+                    },
+                    "RGBA": {
+                        "bit_depth": 8,
+                        "channels": 4,
+                        "compression_level": 6
+                    }
                 }
             },
             "webp": {
                 "image": {
-                    "bit_depth": 8,
-                    "channels": 3
+                    "RGB": {
+                        "bit_depth": 8,
+                        "channels": 3,
+                        "quality": 80
+                    },
+                    "RGBA": {
+                        "bit_depth": 8,
+                        "channels": 4,
+                        "quality": 80
+                    }
                 }
-            },
+            }
         },
         "text": {
             "docx": {
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "utf8": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    },
+                    "utf16": {
+                        "bit_depth": 16,
+                        "channels": 1
+                    }
                 }
             },
             "pdf": {
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "utf8": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    },
+                    "utf16": {
+                        "bit_depth": 16,
+                        "channels": 1
+                    }
                 }
             },
             "txt": {
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "utf8": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    },
+                    "utf16": {
+                        "bit_depth": 16,
+                        "channels": 1
+                    }
                 }
-            },
+            }
         },
         "video": {
             "mkv": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 96000,
-                    "channels": 2,
-                    "frame_size": 960,
-                    "sample_rate": 48000
+                    "aac": {
+                        "bit_depth": 32,
+                        "bit_rate": 128000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "flac": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "compression_level": 5,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000
+                    },
+                    "mp3": {
+                        "bit_depth": 32,
+                        "bit_rate": 192000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1152,
+                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
+                    },
+                    "opus": {
+                        "bit_depth": 32,
+                        "bit_rate": 96000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 960,
+                        "sample_rate": 48000
+                    },
+                    "pcm_f32le": {
+                        "bit_depth": 32,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s16le": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s24le": {
+                        "bit_depth": 24,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s32le": {
+                        "bit_depth": 32,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "vorbis": {
+                        "bit_depth": 32,
+                        "bit_rate": 112000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
+                    }
                 },
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "ass": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    },
+                    "srt": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    },
+                    "vtt": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    }
                 },
                 "video": {
-                    "bit_depth": 8,
-                    "channels": 3,
-                    "frame_rate": 30
+                    "av1": {
+                        "bit_depth": 8,
+                        "bit_rate": 1000000,
+                        "channels": 3,
+                        "crf": 30,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    },
+                    "ffv1": {
+                        "bit_depth": 8,
+                        "channels": 3,
+                        "frame_rate": 30,
+                        "gop_size": 1
+                    },
+                    "h264": {
+                        "bit_depth": 8,
+                        "bit_rate": 2000000,
+                        "channels": 3,
+                        "crf": 23,
+                        "frame_rate": 30,
+                        "gop_size": 12,
+                        "preset": "medium"
+                    },
+                    "h265": {
+                        "bit_depth": 8,
+                        "bit_rate": 1500000,
+                        "channels": 3,
+                        "crf": 28,
+                        "frame_rate": 30,
+                        "gop_size": 12,
+                        "preset": "medium"
+                    },
+                    "vp8": {
+                        "bit_depth": 8,
+                        "bit_rate": 2000000,
+                        "channels": 3,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    },
+                    "vp9": {
+                        "bit_depth": 8,
+                        "bit_rate": 1500000,
+                        "channels": 3,
+                        "crf": 31,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    }
                 }
             },
             "mov": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 128000,
-                    "channels": 2,
-                    "frame_size": 1024,
-                    "sample_rate": 48000
+                    "aac": {
+                        "bit_depth": 32,
+                        "bit_rate": 128000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "alac": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000
+                    },
+                    "mp3": {
+                        "bit_depth": 32,
+                        "bit_rate": 192000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1152,
+                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
+                    },
+                    "pcm_f32le": {
+                        "bit_depth": 32,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s16le": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s24le": {
+                        "bit_depth": 24,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "pcm_s32le": {
+                        "bit_depth": 32,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    }
                 },
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "mov_text": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    }
                 },
                 "video": {
-                    "bit_depth": 8,
-                    "channels": 3,
-                    "frame_rate": 30
+                    "h264": {
+                        "bit_depth": 8,
+                        "bit_rate": 2000000,
+                        "channels": 3,
+                        "crf": 23,
+                        "frame_rate": 30,
+                        "gop_size": 12,
+                        "preset": "medium"
+                    },
+                    "h265": {
+                        "bit_depth": 8,
+                        "bit_rate": 1500000,
+                        "channels": 3,
+                        "crf": 28,
+                        "frame_rate": 30,
+                        "gop_size": 12,
+                        "preset": "medium"
+                    },
+                    "mjpeg": {
+                        "bit_depth": 8,
+                        "bit_rate": 10000000,
+                        "channels": 3,
+                        "frame_rate": 30,
+                        "gop_size": 1
+                    },
+                    "prores_ks": {
+                        "bit_depth": 10,
+                        "channels": 3,
+                        "frame_rate": 30,
+                        "gop_size": 1
+                    }
                 }
             },
             "mp4": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 128000,
-                    "channels": 2,
-                    "frame_size": 1024,
-                    "sample_rate": 48000
+                    "aac": {
+                        "bit_depth": 32,
+                        "bit_rate": 128000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1024,
+                        "sample_rate": 48000
+                    },
+                    "alac": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000
+                    },
+                    "mp3": {
+                        "bit_depth": 32,
+                        "bit_rate": 192000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 1152,
+                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
+                    }
                 },
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "mov_text": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    }
                 },
                 "video": {
-                    "bit_depth": 8,
-                    "channels": 3,
-                    "frame_rate": 30
+                    "av1": {
+                        "bit_depth": 8,
+                        "bit_rate": 1000000,
+                        "channels": 3,
+                        "crf": 30,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    },
+                    "h264": {
+                        "bit_depth": 8,
+                        "bit_rate": 2000000,
+                        "channels": 3,
+                        "crf": 23,
+                        "frame_rate": 30,
+                        "gop_size": 12,
+                        "preset": "medium"
+                    },
+                    "h265": {
+                        "bit_depth": 8,
+                        "bit_rate": 1500000,
+                        "channels": 3,
+                        "crf": 28,
+                        "frame_rate": 30,
+                        "gop_size": 12,
+                        "preset": "medium"
+                    }
                 }
             },
             "ogg": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 96000,
-                    "channels": 2,
-                    "frame_size": 960,
-                    "sample_rate": 48000
+                    "flac": {
+                        "bit_depth": 16,
+                        "channels": 2,
+                        "compression_level": 5,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000
+                    },
+                    "opus": {
+                        "bit_depth": 32,
+                        "bit_rate": 96000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 960,
+                        "sample_rate": 48000
+                    },
+                    "vorbis": {
+                        "bit_depth": 32,
+                        "bit_rate": 112000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
+                    }
                 },
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "kate": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    }
                 },
                 "video": {
-                    "bit_depth": 8,
-                    "channels": 3,
-                    "frame_rate": 30
+                    "theora": {
+                        "bit_depth": 8,
+                        "bit_rate": 2000000,
+                        "channels": 3,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    }
                 }
             },
             "webm": {
                 "audio": {
-                    "bit_depth": 32,
-                    "bit_rate": 96000,
-                    "channels": 2,
-                    "frame_size": 960,
-                    "sample_rate": 48000
+                    "opus": {
+                        "bit_depth": 32,
+                        "bit_rate": 96000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 960,
+                        "sample_rate": 48000
+                    },
+                    "vorbis": {
+                        "bit_depth": 32,
+                        "bit_rate": 112000,
+                        "channels": 2,
+                        "frame_layout": "stereo",
+                        "frame_size": 4096,
+                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
+                    }
                 },
                 "text": {
-                    "bit_depth": 8,
-                    "channels": 1
+                    "vtt": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    }
                 },
                 "video": {
-                    "bit_depth": 8,
-                    "channels": 3,
-                    "frame_rate": 30
+                    "av1": {
+                        "bit_depth": 8,
+                        "bit_rate": 1000000,
+                        "channels": 3,
+                        "crf": 30,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    },
+                    "vp8": {
+                        "bit_depth": 8,
+                        "bit_rate": 2000000,
+                        "channels": 3,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    },
+                    "vp9": {
+                        "bit_depth": 8,
+                        "bit_rate": 1500000,
+                        "channels": 3,
+                        "crf": 31,
+                        "frame_rate": 30,
+                        "gop_size": 12
+                    }
                 }
             }
         }

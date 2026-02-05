@@ -48,22 +48,22 @@ class EncodingDefaults:
             "jpg": {
                 "image": {
                     "channel": "RGB",
-                    "sample": "",
-                    "tensor": "float32"
+                    "sample": "uint8",
+                    "tensor": "uint8"
                 }
             },
             "png": {
                 "image": {
                     "channel": "RGBA",
-                    "sample": "",
-                    "tensor": "float32"
+                    "sample": "uint8",
+                    "tensor": "uint8"
                 }
             },
             "webp": {
                 "image": {
                     "channel": "RGB",
-                    "sample": "",
-                    "tensor": "float32"
+                    "sample": "uint8",
+                    "tensor": "uint8"
                 }
             }
         },

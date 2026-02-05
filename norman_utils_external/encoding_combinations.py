@@ -54,7 +54,7 @@ class EncodingCombinations:
                         "s16"
                     },
                     "pcm_s24le": {
-                        "s32" # FFmpeg uses 32-bit samples to represent 24-bit PCM
+                        "s32" # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory
                     },
                     "pcm_s32le": {
                         "s32"
@@ -65,25 +65,47 @@ class EncodingCombinations:
         "image": {
             "jpg": {
                 "image": {
-                    "CMYK": {},
-                    "L": {},
-                    "RGB": {},
-                    "YCbCr": {}
+                    "CMYK": {
+                        "uint8"
+                    },
+                    "L": {
+                        "uint8"
+                    },
+                    "RGB": {
+                        "uint8"
+                    },
+                    "YCbCr": {
+                        "uint8"
+                    }
                 }
             },
             "png": {
                 "image": {
-                    "1": {},
-                    "L": {},
-                    "P": {},
-                    "RGB": {},
-                    "RGBA": {}
+                    "1": {
+                        "uint8"
+                    },
+                    "L": {
+                        "uint8"
+                    },
+                    "P": {
+                        "uint8"
+                    },
+                    "RGB": {
+                        "uint8"
+                    },
+                    "RGBA": {
+                        "uint8"
+                    }
                 }
             },
             "webp": {
                 "image": {
-                    "RGB": {},
-                    "RGBA": {}
+                    "RGB": {
+                        "uint8"
+                    },
+                    "RGBA": {
+                        "uint8"
+                    }
                 }
             }
         },
@@ -148,7 +170,7 @@ class EncodingCombinations:
                         "s16"
                     },
                     "pcm_s24le": {
-                        "s32"  # FFmpeg uses 32-bit samples to represent 24-bit PCM
+                        "s32"  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory
                     },
                     "pcm_s32le": {
                         "s32"
@@ -217,7 +239,7 @@ class EncodingCombinations:
                         "s16"
                     },
                     "pcm_s24le": {
-                        "s32"  # FFmpeg uses 32-bit samples to represent 24-bit PCM
+                        "s32"  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory
                     },
                     "pcm_s32le": {
                         "s32"
