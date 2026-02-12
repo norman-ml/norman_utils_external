@@ -142,23 +142,6 @@ class EncodingDefaults:
                     "tensor": "float32"
                 }
             },
-            "ogg": {
-                "audio": {
-                    "channel": "opus",
-                    "sample": "flt",
-                    "tensor": "float32"
-                },
-                "text": {
-                    "channel": "kate",
-                    "sample": "utf8",
-                    "tensor": "int64"
-                },
-                "video": {
-                    "channel": "theora",
-                    "sample": "yuv420p",
-                    "tensor": "float32"
-                }
-            },
             "webm": {
                 "audio": {
                     "channel": "opus",

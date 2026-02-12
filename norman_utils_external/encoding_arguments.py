@@ -504,49 +504,6 @@ class EncodingArguments:
                     }
                 }
             },
-            "ogg": {
-                "audio": {
-                    "flac": {
-                        "bit_depth": 16,
-                        "channels": 2,
-                        "compression_level": 5,
-                        "frame_layout": "stereo",
-                        "frame_size": 4096,
-                        "sample_rate": 48000
-                    },
-                    "opus": {
-                        "bit_depth": 32,
-                        "bit_rate": 96000,
-                        "channels": 2,
-                        "frame_layout": "stereo",
-                        "frame_size": 960,
-                        "sample_rate": 48000
-                    },
-                    "vorbis": {
-                        "bit_depth": 32,
-                        "bit_rate": 112000,
-                        "channels": 2,
-                        "frame_layout": "stereo",
-                        "frame_size": 4096,
-                        "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
-                    }
-                },
-                "text": {
-                    "kate": {
-                        "bit_depth": 8,
-                        "channels": 1
-                    }
-                },
-                "video": {
-                    "theora": {
-                        "bit_depth": 8,
-                        "bit_rate": 2000000,
-                        "channels": 3,
-                        "frame_rate": 30,
-                        "gop_size": 12
-                    }
-                }
-            },
             "webm": {
                 "audio": {
                     "opus": {

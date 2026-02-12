@@ -325,33 +325,6 @@ class EncodingCombinations:
                     }
                 }
             },
-            "ogg": {
-                "audio": {
-                    "flac": {
-                        "s16",
-                        "s32"
-                    },
-                    "opus": {
-                        "flt",
-                        "s16"
-                    },
-                    "vorbis": {
-                        "fltp"
-                    }
-                },
-                "text": {
-                    "kate": {
-                        "utf8"
-                    }
-                },
-                "video": {
-                    "theora": {
-                        "yuv420p",
-                        "yuv422p",
-                        "yuv444p"
-                    }
-                },
-            },
             "webm": {
                 "audio": {
                     "opus": {
