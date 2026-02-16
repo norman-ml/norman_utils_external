@@ -19,7 +19,7 @@ class FileUtils(metaclass=Singleton):
         else:
             raise ValueError("Unsupported file object or operation")
 
-    def get_file_type(self, file_path: str):
+    def get_representation_from_path(self, file_path: str):
         try:
             with open(file_path, "rb") as file:
                 header = file.read(1024)
@@ -33,9 +33,9 @@ class FileUtils(metaclass=Singleton):
                 "Content-Type": "application/octet-stream"  # S3 relies on Content-Type for proper file handling.
             }
 
-        return self.get_file_type_from_header(header)
+        return self.get_representation_from_header(header)
 
-    def get_file_type_from_header(self, header: bytes):
+    def get_representation_from_header(self, header: bytes):
         hex_header = header.hex()
 
         # Audio (alphabetical: aac, ac3, flac, mp3, ogg, wav)
@@ -95,7 +95,7 @@ class FileUtils(metaclass=Singleton):
             "Content-Type": mime_type  # S3 relies on Content-Type for proper file handling.
         }
 
-    def get_text_channel_encoding(self, file_path: str):
+    def get_text_channel_encoding_from_path(self, file_path: str):
         try:
             with open(file_path, "rb") as file:
                 header = file.read(1024)
