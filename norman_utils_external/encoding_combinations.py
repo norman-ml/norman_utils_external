@@ -66,45 +66,45 @@ class EncodingCombinations:
             "jpg": {
                 "image": {
                     "CMYK": {
-                        "uint8"
+                        "u8"
                     },
                     "L": {
-                        "uint8"
+                        "u8"
                     },
                     "RGB": {
-                        "uint8"
+                        "u8"
                     },
                     "YCbCr": {
-                        "uint8"
+                        "u8"
                     }
                 }
             },
             "png": {
                 "image": {
                     "1": {
-                        "uint8"
+                        "u8"
                     },
                     "L": {
-                        "uint8"
+                        "u8"
                     },
                     "P": {
-                        "uint8"
+                        "u8"
                     },
                     "RGB": {
-                        "uint8"
+                        "u8"
                     },
                     "RGBA": {
-                        "uint8"
+                        "u8"
                     }
                 }
             },
             "webp": {
                 "image": {
                     "RGB": {
-                        "uint8"
+                        "u8"
                     },
                     "RGBA": {
-                        "uint8"
+                        "u8"
                     }
                 }
             }
