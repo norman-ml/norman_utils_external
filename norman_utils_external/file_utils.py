@@ -62,11 +62,11 @@ class FileUtils(metaclass=Singleton):
         elif hex_header.startswith("52494646") and "57454250" in hex_header:  # webp - RIFF + WEBP
             container_modality, container_encoding, mime_type = "Image", "webp", "image/webp"
 
-        # Video (alphabetical: avi, matroska, mov, mp4, ogg, webm)
+        # Video (alphabetical: avi, mkv, mov, mp4, ogg, webm)
         elif hex_header.startswith("52494646") and "41564920" in hex_header:  # avi - RIFF + AVI
             container_modality, container_encoding, mime_type = "Video", "avi", "video/x-msvideo"
         elif hex_header.startswith("1a45dfa3") and "7765626d" not in hex_header:  # matroska - EBML without webm doctype
-            container_modality, container_encoding, mime_type = "Video", "matroska", "video/x-matroska"
+            container_modality, container_encoding, mime_type = "Video", "mkv", "video/x-matroska"
         elif hex_header.startswith("000000") and "6674797071742020" in hex_header:  # mov - ftyp qt (QuickTime)
             container_modality, container_encoding, mime_type = "Video", "mov", "video/quicktime"
         elif hex_header.startswith("000000") and "66747970" in hex_header:  # mp4 - ftyp (mp4 and variants)
