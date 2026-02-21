@@ -181,13 +181,13 @@ class EncodingCombinations:
                 },
                 "text": {
                     "ass": {
-                        "utf8"
+                        "u8"
                     },
                     "srt": {
-                        "utf8"
+                        "u8"
                     },
                     "vtt": {
-                        "utf8"
+                        "u8"
                     }
                 },
                 "video": {
@@ -247,7 +247,7 @@ class EncodingCombinations:
                 },
                 "text": {
                      "mov_text": {
-                        "utf8"
+                        "u8"
                     }
                 },
                 "video": {
@@ -306,7 +306,7 @@ class EncodingCombinations:
                 },
                 "text": {
                     "mov_text": {
-                        "utf8"
+                        "u8"
                     }
                 },
                 "video": {
@@ -337,7 +337,7 @@ class EncodingCombinations:
                 },
                 "text": {
                     "vtt": {
-                        "utf8"
+                        "u8"
                     }
                 },
                 "video": {
