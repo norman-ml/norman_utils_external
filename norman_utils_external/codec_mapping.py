@@ -10,9 +10,9 @@ class CodecMapping:
         "wav": "wav",
 
         # Image (Pillow formats)
-        "jpg": "JPEG",
-        "png": "PNG",
-        "webp": "WEBP",
+        "jpg": "jpeg",
+        "png": "png",
+        "webp": "webp",
 
         # Video (PyAV formats)
         "mkv": "matroska",
