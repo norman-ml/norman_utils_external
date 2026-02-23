@@ -106,6 +106,16 @@ class EncodingArguments:
                 }
             }
         },
+        "float": {
+            "txt": {
+                "float": {
+                    "utf8": {
+                        "bit_depth": 8,
+                        "channels": 1
+                    }
+                }
+            }
+        },
         "image": {
             "jpg": {
                 "image": {
@@ -171,6 +181,16 @@ class EncodingArguments:
                         "bit_depth": 8,
                         "channels": 4,
                         "quality": 80
+                    }
+                }
+            }
+        },
+        "integer": {
+            "txt": {
+                "integer": {
+                    "utf8": {
+                        "bit_depth": 8,
+                        "channels": 1
                     }
                 }
             }

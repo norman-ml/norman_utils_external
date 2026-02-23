@@ -44,6 +44,15 @@ class EncodingDefaults:
                 }
             }
         },
+        "float": {
+            "txt": {
+                "float": {
+                    "channel": "utf8",
+                    "sample": "u8",
+                    "tensor": "float32"
+                }
+            }
+        },
         "image": {
             "jpg": {
                 "image": {
@@ -64,6 +73,15 @@ class EncodingDefaults:
                     "channel": "RGB",
                     "sample": "uint8",
                     "tensor": "uint8"
+                }
+            }
+        },
+        "integer": {
+            "txt": {
+                "integer": {
+                    "channel": "utf8",
+                    "sample": "u8",
+                    "tensor": "int32"
                 }
             }
         },

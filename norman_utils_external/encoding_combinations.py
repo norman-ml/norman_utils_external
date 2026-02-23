@@ -62,6 +62,15 @@ class EncodingCombinations:
                 }
             }
         },
+        "float": {
+            "txt": {
+                "float": {
+                    "utf8": {
+                        "u8"
+                    }
+                }
+            }
+        },
         "image": {
             "jpg": {
                 "image": {
@@ -104,6 +113,15 @@ class EncodingCombinations:
                         "u8"
                     },
                     "RGBA": {
+                        "u8"
+                    }
+                }
+            }
+        },
+        "integer": {
+            "txt": {
+                "integer": {
+                    "utf8": {
                         "u8"
                     }
                 }
