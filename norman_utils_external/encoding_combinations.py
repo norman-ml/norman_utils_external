@@ -62,6 +62,29 @@ class EncodingCombinations:
                 }
             }
         },
+        "File": {
+            "bin": {
+                "File": {
+                    "utf8": {
+                        "u8"
+                    }
+                }
+            },
+            "pt": {
+                "File": {
+                    "utf8": {
+                        "u8"
+                    }
+                }
+            },
+            "zip": {
+                "File": {
+                    "utf8": {
+                        "u8"
+                    }
+                }
+            }
+        },
         "Float": {
             "txt": {
                 "Float": {

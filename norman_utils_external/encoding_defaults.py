@@ -44,6 +44,29 @@ class EncodingDefaults:
                 }
             }
         },
+        "File": {
+            "bin": {
+                "File": {
+                    "channel": "utf8",
+                    "sample": "u8",
+                    "tensor": "float32"
+                }
+            },
+            "pt": {
+                "File": {
+                    "channel": "utf8",
+                    "sample": "u8",
+                    "tensor": "float32"
+                }
+            },
+            "zip": {
+                "File": {
+                    "channel": "utf8",
+                    "sample": "u8",
+                    "tensor": "float32"
+                }
+            }
+        },
         "Float": {
             "txt": {
                 "Float": {
