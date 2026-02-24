@@ -1,8 +1,8 @@
 class EncodingArguments:
     Arguments_Map = {
-        "audio": {
+        "Audio": {
             "aac": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "bit_depth": 32,
                         "bit_rate": 128000,
@@ -14,7 +14,7 @@ class EncodingArguments:
                 }
             },
             "flac": {
-                "audio": {
+                "Audio": {
                     "flac": {
                         "bit_depth": 16,
                         "channels": 2,
@@ -26,7 +26,7 @@ class EncodingArguments:
                 }
             },
             "mp3": {
-                "audio": {
+                "Audio": {
                     "mp3": {
                         "bit_depth": 32,
                         "bit_rate": 192000,
@@ -46,7 +46,7 @@ class EncodingArguments:
                 }
             },
             "ogg": {
-                "audio": {
+                "Audio": {
                     "flac": {
                         "bit_depth": 16,
                         "channels": 2,
@@ -74,7 +74,7 @@ class EncodingArguments:
                 }
             },
             "wav": {
-                "audio": {
+                "Audio": {
                     "pcm_f32le": {
                         "bit_depth": 32,
                         "channels": 2,
@@ -106,9 +106,9 @@ class EncodingArguments:
                 }
             }
         },
-        "float": {
+        "Float": {
             "txt": {
-                "float": {
+                "Float": {
                     "utf8": {
                         "bit_depth": 8,
                         "channels": 1
@@ -116,9 +116,9 @@ class EncodingArguments:
                 }
             }
         },
-        "image": {
+        "Image": {
             "jpg": {
-                "image": {
+                "Image": {
                     "CMYK": {
                         "bit_depth": 8,
                         "channels": 4,
@@ -142,7 +142,7 @@ class EncodingArguments:
                 }
             },
             "png": {
-                "image": {
+                "Image": {
                     "1": {
                         "bit_depth": 1,
                         "channels": 1,
@@ -171,7 +171,7 @@ class EncodingArguments:
                 }
             },
             "webp": {
-                "image": {
+                "Image": {
                     "RGB": {
                         "bit_depth": 8,
                         "channels": 3,
@@ -185,9 +185,9 @@ class EncodingArguments:
                 }
             }
         },
-        "integer": {
+        "Integer": {
             "txt": {
-                "integer": {
+                "Integer": {
                     "utf8": {
                         "bit_depth": 8,
                         "channels": 1
@@ -195,9 +195,9 @@ class EncodingArguments:
                 }
             }
         },
-        "text": {
+        "Text": {
             "docx": {
-                "text": {
+                "Text": {
                     "utf8": {
                         "bit_depth": 8,
                         "channels": 1
@@ -209,7 +209,7 @@ class EncodingArguments:
                 }
             },
             "pdf": {
-                "text": {
+                "Text": {
                     "utf8": {
                         "bit_depth": 8,
                         "channels": 1
@@ -221,7 +221,7 @@ class EncodingArguments:
                 }
             },
             "txt": {
-                "text": {
+                "Text": {
                     "utf8": {
                         "bit_depth": 8,
                         "channels": 1
@@ -233,9 +233,9 @@ class EncodingArguments:
                 }
             }
         },
-        "video": {
+        "Video": {
             "mkv": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "bit_depth": 32,
                         "bit_rate": 128000,
@@ -305,7 +305,7 @@ class EncodingArguments:
                         "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
                     }
                 },
-                "text": {
+                "Text": {
                     "ass": {
                         "bit_depth": 8,
                         "channels": 1
@@ -319,7 +319,7 @@ class EncodingArguments:
                         "channels": 1
                     }
                 },
-                "video": {
+                "Video": {
                     "av1": {
                         "bit_depth": 8,
                         "bit_rate": 1000000,
@@ -370,7 +370,7 @@ class EncodingArguments:
                 }
             },
             "mov": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "bit_depth": 32,
                         "bit_rate": 128000,
@@ -423,13 +423,13 @@ class EncodingArguments:
                         "sample_rate": 48000
                     }
                 },
-                "text": {
+                "Text": {
                     "mov_text": {
                         "bit_depth": 8,
                         "channels": 1
                     }
                 },
-                "video": {
+                "Video": {
                     "h264": {
                         "bit_depth": 8,
                         "bit_rate": 2000000,
@@ -464,7 +464,7 @@ class EncodingArguments:
                 }
             },
             "mp4": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "bit_depth": 32,
                         "bit_rate": 128000,
@@ -489,13 +489,13 @@ class EncodingArguments:
                         "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
                     }
                 },
-                "text": {
+                "Text": {
                     "mov_text": {
                         "bit_depth": 8,
                         "channels": 1
                     }
                 },
-                "video": {
+                "Video": {
                     "av1": {
                         "bit_depth": 8,
                         "bit_rate": 1000000,
@@ -525,7 +525,7 @@ class EncodingArguments:
                 }
             },
             "webm": {
-                "audio": {
+                "Audio": {
                     "opus": {
                         "bit_depth": 32,
                         "bit_rate": 96000,
@@ -543,13 +543,13 @@ class EncodingArguments:
                         "sample_rate": 48000 # standalone audio uses 44100 (CD origin), but video containers standardise on 48kHz to avoid resampling against the video timeline
                     }
                 },
-                "text": {
+                "Text": {
                     "vtt": {
                         "bit_depth": 8,
                         "channels": 1
                     }
                 },
-                "video": {
+                "Video": {
                     "av1": {
                         "bit_depth": 8,
                         "bit_rate": 1000000,

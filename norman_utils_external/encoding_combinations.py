@@ -1,15 +1,15 @@
 class EncodingCombinations:
     Combinations_Map = {
-        "audio": {
+        "Audio": {
             "aac": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "fltp"
                     }
                 }
             },
             "flac": {
-                "audio": {
+                "Audio": {
                     "flac": {
                         "s16",
                         "s32"
@@ -17,7 +17,7 @@ class EncodingCombinations:
                 }
             },
             "mp3": {
-                "audio": {
+                "Audio": {
                     "mp3": {
                         "fltp",
                         "s16p",
@@ -31,7 +31,7 @@ class EncodingCombinations:
                 }
             },
             "ogg": {
-                "audio": {
+                "Audio": {
                     "flac": {
                         "s16",
                         "s32"
@@ -46,7 +46,7 @@ class EncodingCombinations:
                 }
             },
             "wav": {
-                "audio": {
+                "Audio": {
                     "pcm_f32le": {
                         "flt"
                     },
@@ -62,18 +62,18 @@ class EncodingCombinations:
                 }
             }
         },
-        "float": {
+        "Float": {
             "txt": {
-                "float": {
+                "Float": {
                     "utf8": {
                         "u8"
                     }
                 }
             }
         },
-        "image": {
+        "Image": {
             "jpg": {
-                "image": {
+                "Image": {
                     "CMYK": {
                         "u8"
                     },
@@ -89,7 +89,7 @@ class EncodingCombinations:
                 }
             },
             "png": {
-                "image": {
+                "Image": {
                     "1": {
                         "u8"
                     },
@@ -108,7 +108,7 @@ class EncodingCombinations:
                 }
             },
             "webp": {
-                "image": {
+                "Image": {
                     "RGB": {
                         "u8"
                     },
@@ -118,18 +118,18 @@ class EncodingCombinations:
                 }
             }
         },
-        "integer": {
+        "Integer": {
             "txt": {
-                "integer": {
+                "Integer": {
                     "utf8": {
                         "u8"
                     }
                 }
             }
         },
-        "text": {
+        "Text": {
             "docx": {
-                "text": {
+                "Text": {
                     "utf8": {
                         "u8"
                     },
@@ -140,7 +140,7 @@ class EncodingCombinations:
                 }
             },
             "pdf": {
-                "text": {
+                "Text": {
                     "utf8": {
                         "u8"
                     },
@@ -151,7 +151,7 @@ class EncodingCombinations:
                 }
             },
             "txt": {
-                "text": {
+                "Text": {
                     "utf8": {
                         "u8"
                     },
@@ -162,9 +162,9 @@ class EncodingCombinations:
                 }
             }
         },
-        "video": {
+        "Video": {
             "mkv": {
-                "audio": {
+                "Audio": {
                     "aac": {
                          "fltp"
                     },
@@ -197,7 +197,7 @@ class EncodingCombinations:
                         "fltp"
                     }
                 },
-                "text": {
+                "Text": {
                     "ass": {
                         "u8"
                     },
@@ -208,7 +208,7 @@ class EncodingCombinations:
                         "u8"
                     }
                 },
-                "video": {
+                "Video": {
                     "av1": {
                         "yuv420p",
                         "yuv444p"
@@ -237,7 +237,7 @@ class EncodingCombinations:
                 }
             },
             "mov": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "fltp"
                     },
@@ -263,12 +263,12 @@ class EncodingCombinations:
                         "s32"
                     },
                 },
-                "text": {
+                "Text": {
                      "mov_text": {
                         "u8"
                     }
                 },
-                "video": {
+                "Video": {
                     "h264": {
                         "nv12",
                         "nv16",
@@ -308,7 +308,7 @@ class EncodingCombinations:
                 }
             },
             "mp4": {
-                "audio": {
+                "Audio": {
                     "aac": {
                         "fltp"
                     },
@@ -322,12 +322,12 @@ class EncodingCombinations:
                         "s32p"
                     }
                 },
-                "text": {
+                "Text": {
                     "mov_text": {
                         "u8"
                     }
                 },
-                "video": {
+                "Video": {
                     "av1": {
                         "gbrp",
                         "yuv420p",
@@ -344,7 +344,7 @@ class EncodingCombinations:
                 }
             },
             "webm": {
-                "audio": {
+                "Audio": {
                     "opus": {
                         "flt",
                         "s16"
@@ -353,12 +353,12 @@ class EncodingCombinations:
                         "fltp"
                     }
                 },
-                "text": {
+                "Text": {
                     "vtt": {
                         "u8"
                     }
                 },
-                "video": {
+                "Video": {
                     "av1": {
                         "yuv420p"
                     },
