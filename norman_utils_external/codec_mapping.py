@@ -3,7 +3,7 @@
 class CodecMapping:
     # Key = Norman encoding value
     # Value = Library codec name
-    ContainerEncoders = {
+    Container_Encoders = {
         # Audio (PyAV formats)
         "aac": "adts",
         "flac": "flac",
@@ -25,7 +25,7 @@ class CodecMapping:
 
     # Key = Library codec name
     # Value = Norman encoding value
-    ContainerDecoders = {
+    Container_Decoders = {
         # Audio (PyAV formats)
         "aac": "aac",
         "adts": "aac",
