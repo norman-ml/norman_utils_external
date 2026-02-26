@@ -79,21 +79,21 @@ class EncodingDefaults:
         "Image": {
             "jpg": {
                 "Image": {
-                    "channel": "RGB",
+                    "channel": "rgb",
                     "sample": "uint8",
                     "tensor": "uint8"
                 }
             },
             "png": {
                 "Image": {
-                    "channel": "RGBA",
+                    "channel": "rgba",
                     "sample": "uint8",
                     "tensor": "uint8"
                 }
             },
             "webp": {
                 "Image": {
-                    "channel": "RGB",
+                    "channel": "rgb",
                     "sample": "uint8",
                     "tensor": "uint8"
                 }

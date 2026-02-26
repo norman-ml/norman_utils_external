@@ -97,16 +97,16 @@ class EncodingCombinations:
         "Image": {
             "jpg": {
                 "Image": {
-                    "CMYK": {
+                    "cmyk": {
                         "u8"
                     },
-                    "L": {
+                    "l": {
                         "u8"
                     },
-                    "RGB": {
+                    "rgb": {
                         "u8"
                     },
-                    "YCbCr": {
+                    "ycbcr": {
                         "u8"
                     }
                 }
@@ -116,26 +116,26 @@ class EncodingCombinations:
                     "1": {
                         "u8"
                     },
-                    "L": {
+                    "l": {
                         "u8"
                     },
-                    "P": {
+                    "p": {
                         "u8"
                     },
-                    "RGB": {
+                    "rgb": {
                         "u8"
                     },
-                    "RGBA": {
+                    "rgba": {
                         "u8"
                     }
                 }
             },
             "webp": {
                 "Image": {
-                    "RGB": {
+                    "rgb": {
                         "u8"
                     },
-                    "RGBA": {
+                    "rgba": {
                         "u8"
                     }
                 }

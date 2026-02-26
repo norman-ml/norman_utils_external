@@ -119,22 +119,22 @@ class EncodingArguments:
         "Image": {
             "jpg": {
                 "Image": {
-                    "CMYK": {
+                    "cmyk": {
                         "bit_depth": 8,
                         "channels": 4,
                         "quality": 75
                     },
-                    "L": {
+                    "l": {
                         "bit_depth": 8,
                         "channels": 1,
                         "quality": 75
                     },
-                    "RGB": {
+                    "rgb": {
                         "bit_depth": 8,
                         "channels": 3,
                         "quality": 75
                     },
-                    "YCbCr": {
+                    "ycbcr": {
                         "bit_depth": 8,
                         "channels": 3,
                         "quality": 75
@@ -148,22 +148,22 @@ class EncodingArguments:
                         "channels": 1,
                         "compression_level": 6
                     },
-                    "L": {
+                    "l": {
                         "bit_depth": 8,
                         "channels": 1,
                         "compression_level": 6
                     },
-                    "P": {
+                    "p": {
                         "bit_depth": 8,
                         "channels": 1,
                         "compression_level": 6
                     },
-                    "RGB": {
+                    "rgb": {
                         "bit_depth": 8,
                         "channels": 3,
                         "compression_level": 6
                     },
-                    "RGBA": {
+                    "rgba": {
                         "bit_depth": 8,
                         "channels": 4,
                         "compression_level": 6
@@ -172,12 +172,12 @@ class EncodingArguments:
             },
             "webp": {
                 "Image": {
-                    "RGB": {
+                    "rgb": {
                         "bit_depth": 8,
                         "channels": 3,
                         "quality": 80
                     },
-                    "RGBA": {
+                    "rgba": {
                         "bit_depth": 8,
                         "channels": 4,
                         "quality": 80
