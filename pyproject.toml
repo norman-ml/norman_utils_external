@@ -16,7 +16,7 @@ dependencies = [
     "norman-exceptions",
     "norman-objects",
 
-    "cryptography==45.0.7"
+    "cryptography==46.0.5"
 ]
 
 [tool.flit.module]
@@ -24,6 +24,6 @@ name = "norman_utils_external"
 
 [tool.uv]
 override-dependencies = [
-    "norman-exceptions @ git+https://github.com/norman-ml/norman_exceptions.git@86c778p0x/tech-debt/library-restructuring",
-    "norman-objects @ git+https://github.com/norman-ml/norman_objects.git@86c778p0x/tech-debt/library-restructuring"
+    "norman-exceptions @ git+https://github.com/norman-ml/norman_exceptions.git@main",
+    "norman-objects @ git+https://github.com/norman-ml/norman_objects.git@main"
 ]
