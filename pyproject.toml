@@ -22,6 +22,8 @@ dependencies = [
 [tool.flit.module]
 name = "norman_utils_external"
 
-[tool.uv.sources]
-norman-exceptions = { git = "https://github.com/norman-ml/norman_exceptions.git", branch = "main" }
-norman-objects = { git = "https://github.com/norman-ml/norman_objects.git", branch = "main" }
+[tool.uv]
+override-dependencies = [
+    "norman-exceptions @ git+https://github.com/norman-ml/norman_exceptions.git@86c778p0x/tech-debt/library-restructuring",
+    "norman-objects @ git+https://github.com/norman-ml/norman_objects.git@86c778p0x/tech-debt/library-restructuring"
+]
