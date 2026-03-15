@@ -19,6 +19,11 @@ dependencies = [
     "cryptography==46.0.5"
 ]
 
+[project.optional-dependencies]
+dev = [
+    # Intentional boilerplate (for build scripts)
+]
+
 [tool.flit.module]
 name = "norman_utils_external"
 
