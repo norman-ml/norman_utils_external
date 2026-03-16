@@ -1,397 +1,404 @@
+from norman_objects.shared.encoding.channel_encoding import ChannelEncoding
+from norman_objects.shared.encoding.container_encoding import ContainerEncoding
+from norman_objects.shared.encoding.sample_encoding import SampleEncoding
+from norman_objects.shared.modality.channel_modality import ChannelModality
+from norman_objects.shared.modality.container_modality import ContainerModality
+
+
 class EncodingCombinations:
     Combinations_Map = {
-        "Audio": {
-            "aac": {
-                "Audio": {
-                    "aac": {
-                        "fltp"
+        ContainerModality.Audio: {
+            ContainerEncoding.Aac: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Aac: {
+                        SampleEncoding.FltP
                     }
                 }
             },
-            "flac": {
-                "Audio": {
-                    "flac": {
-                        "s16",
-                        "s32"
+            ContainerEncoding.Flac: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Flac: {
+                        SampleEncoding.S16,
+                        SampleEncoding.S32
                     }
                 }
             },
-            "mp3": {
-                "Audio": {
-                    "mp3": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
+            ContainerEncoding.Mp3: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Mp3: {
+                        SampleEncoding.FltP,
+                        SampleEncoding.S16P,
+                        SampleEncoding.S32P
                     },
-                    "mp3_vbr": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
+                    ChannelEncoding.Mp3Vbr: {
+                        SampleEncoding.FltP,
+                        SampleEncoding.S16P,
+                        SampleEncoding.S32P
                     }
                 }
             },
-            "ogg": {
-                "Audio": {
-                    "flac": {
-                        "s16",
-                        "s32"
+            ContainerEncoding.Ogg: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Flac: {
+                        SampleEncoding.S16,
+                        SampleEncoding.S32
                     },
-                    "opus": {
-                        "flt",
-                        "s16"
+                    ChannelEncoding.Opus: {
+                        SampleEncoding.Flt,
+                        SampleEncoding.S16
                     },
-                    "vorbis": {
-                        "fltp"
+                    ChannelEncoding.Vorbis: {
+                        SampleEncoding.FltP
                     },
                 }
             },
-            "wav": {
-                "Audio": {
-                    "pcm_f32le": {
-                        "flt"
+            ContainerEncoding.Wav: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.PcmF32Le: {
+                        SampleEncoding.Flt
                     },
-                    "pcm_s16le": {
-                        "s16"
+                    ChannelEncoding.PcmS16Le: {
+                        SampleEncoding.S16
                     },
-                    "pcm_s24le": {
-                        "s32" # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory
+                    ChannelEncoding.PcmS24Le: {
+                        SampleEncoding.S32  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM
                     },
-                    "pcm_s32le": {
-                        "s32"
+                    ChannelEncoding.PcmS32Le: {
+                        SampleEncoding.S32
                     }
                 }
             }
         },
-        "File": {
-            "bin": {
-                "File": {
-                    "utf8": {
-                        "u8"
+        ContainerModality.File: {
+            ContainerEncoding.Bin: {
+                ChannelModality.Text: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     }
                 }
             },
-            "pt": {
-                "File": {
-                    "utf8": {
-                        "u8"
+            ContainerEncoding.Pt: {
+                ChannelModality.Text: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     }
                 }
             },
-            "zip": {
-                "File": {
-                    "utf8": {
-                        "u8"
+            ContainerEncoding.Zip: {
+                ChannelModality.Text: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     }
                 }
             }
         },
-        "Float": {
-            "txt": {
-                "Float": {
-                    "utf8": {
-                        "u8"
+        ContainerModality.Float: {
+            ContainerEncoding.Txt: {
+                ChannelModality.Float: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     }
                 }
             }
         },
-        "Image": {
-            "jpg": {
-                "Image": {
-                    "cmyk": {
-                        "u8"
+        ContainerModality.Image: {
+            ContainerEncoding.Jpg: {
+                ChannelModality.Image: {
+                    ChannelEncoding.Cmyk: {
+                        SampleEncoding.U8
                     },
-                    "l": {
-                        "u8"
+                    ChannelEncoding.L: {
+                        SampleEncoding.U8
                     },
-                    "rgb": {
-                        "u8"
+                    ChannelEncoding.Rgb: {
+                        SampleEncoding.U8
                     },
-                    "ycbcr": {
-                        "u8"
+                    ChannelEncoding.YCbCr: {
+                        SampleEncoding.U8
                     }
                 }
             },
-            "png": {
-                "Image": {
-                    "1": {
-                        "u8"
+            ContainerEncoding.Png: {
+                ChannelModality.Image: {
+                    ChannelEncoding.One: {
+                        SampleEncoding.U8
                     },
-                    "l": {
-                        "u8"
+                    ChannelEncoding.L: {
+                        SampleEncoding.U8
                     },
-                    "p": {
-                        "u8"
+                    ChannelEncoding.P: {
+                        SampleEncoding.U8
                     },
-                    "rgb": {
-                        "u8"
+                    ChannelEncoding.Rgb: {
+                        SampleEncoding.U8
                     },
-                    "rgba": {
-                        "u8"
+                    ChannelEncoding.Rgba: {
+                        SampleEncoding.U8
                     }
                 }
             },
-            "webp": {
-                "Image": {
-                    "rgb": {
-                        "u8"
+            ContainerEncoding.WebP: {
+                ChannelModality.Image: {
+                    ChannelEncoding.Rgb: {
+                        SampleEncoding.U8
                     },
-                    "rgba": {
-                        "u8"
+                    ChannelEncoding.Rgba: {
+                        SampleEncoding.U8
                     }
                 }
             }
         },
-        "Integer": {
-            "txt": {
-                "Integer": {
-                    "utf8": {
-                        "u8"
+        ContainerModality.Integer: {
+            ContainerEncoding.Txt: {
+                ChannelModality.Integer: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     }
                 }
             }
         },
-        "Text": {
-            "docx": {
-                "Text": {
-                    "utf8": {
-                        "u8"
+        ContainerModality.Text: {
+            ContainerEncoding.DocX: {
+                ChannelModality.Text: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     },
-                    "utf16": {
-                        "u16be",
-                        "u16le"
+                    ChannelEncoding.Utf16: {
+                        SampleEncoding.U16Be,
+                        SampleEncoding.U16Le
                     }
                 }
             },
-            "pdf": {
-                "Text": {
-                    "utf8": {
-                        "u8"
+            ContainerEncoding.Pdf: {
+                ChannelModality.Text: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     },
-                    "utf16": {
-                        "u16be",
-                        "u16le"
+                    ChannelEncoding.Utf16: {
+                        SampleEncoding.U16Be,
+                        SampleEncoding.U16Le
                     }
                 }
             },
-            "txt": {
-                "Text": {
-                    "utf8": {
-                        "u8"
+            ContainerEncoding.Txt: {
+                ChannelModality.Text: {
+                    ChannelEncoding.Utf8: {
+                        SampleEncoding.U8
                     },
-                    "utf16": {
-                        "u16be",
-                        "u16le"
+                    ChannelEncoding.Utf16: {
+                        SampleEncoding.U16Be,
+                        SampleEncoding.U16Le
                     }
                 }
             }
         },
-        "Video": {
-            "mkv": {
-                "Audio": {
-                    "aac": {
-                         "fltp"
+        ContainerModality.Video: {
+            ContainerEncoding.Mkv: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Aac: {
+                        SampleEncoding.FltP
                     },
-                    "flac": {
-                        "s16",
-                        "s32"
+                    ChannelEncoding.Flac: {
+                        SampleEncoding.S16,
+                        SampleEncoding.S32
                     },
-                    "mp3": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
+                    ChannelEncoding.Mp3: {
+                        SampleEncoding.FltP,
+                        SampleEncoding.S16P,
+                        SampleEncoding.S32P
                     },
-                    "opus": {
-                        "flt",
-                        "s16"
+                    ChannelEncoding.Opus: {
+                        SampleEncoding.Flt,
+                        SampleEncoding.S16
                     },
-                    "pcm_f32le": {
-                        "flt"
+                    ChannelEncoding.PcmF32Le: {
+                        SampleEncoding.Flt
                     },
-                    "pcm_s16le": {
-                        "s16"
+                    ChannelEncoding.PcmS16Le: {
+                        SampleEncoding.S16
                     },
-                    "pcm_s24le": {
-                        "s32"  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory
+                    ChannelEncoding.PcmS24Le: {
+                        SampleEncoding.S32  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM
                     },
-                    "pcm_s32le": {
-                        "s32"
+                    ChannelEncoding.PcmS32Le: {
+                        SampleEncoding.S32
                     },
-                    "vorbis": {
-                        "fltp"
+                    ChannelEncoding.Vorbis: {
+                        SampleEncoding.FltP
                     }
                 },
-                "Text": {
-                    "ass": {
-                        "u8"
+                ChannelModality.Text: {
+                    ChannelEncoding.Ass: {
+                        SampleEncoding.U8
                     },
-                    "srt": {
-                        "u8"
+                    ChannelEncoding.Srt: {
+                        SampleEncoding.U8
                     },
-                    "vtt": {
-                        "u8"
+                    ChannelEncoding.Vtt: {
+                        SampleEncoding.U8
                     }
                 },
-                "Video": {
-                    "av1": {
-                        "yuv420p",
-                        "yuv444p"
+                ChannelModality.Video: {
+                    ChannelEncoding.Av1: {
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv444P
                     },
-                    "ffv1": {
-                        "gbrp",
-                        "yuv420p",
-                        "yuv422p",
-                        "yuv444p"
+                    ChannelEncoding.Ffv1: {
+                        SampleEncoding.GbrP,
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv422P,
+                        SampleEncoding.Yuv444P
                     },
-                    "h264": {
-                        "yuv420p",
-                        "yuv444p"
+                    ChannelEncoding.H264: {
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv444P
                     },
-                    "h265": {
-                        "gbrp",
-                        "yuv420p",
-                        "yuv444p"
+                    ChannelEncoding.H265: {
+                        SampleEncoding.GbrP,
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv444P
                     },
-                    "vp8": {
-                        "yuv420p"
+                    ChannelEncoding.Vp8: {
+                        SampleEncoding.Yuv420P
                     },
-                    "vp9": {
-                        "yuv420p"
+                    ChannelEncoding.Vp9: {
+                        SampleEncoding.Yuv420P
                     }
                 }
             },
-            "mov": {
-                "Audio": {
-                    "aac": {
-                        "fltp"
+            ContainerEncoding.Mov: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Aac: {
+                        SampleEncoding.FltP
                     },
-                    "alac": {
-                        "s16",
-                        "s32"
+                    ChannelEncoding.Alac: {
+                        SampleEncoding.S16,
+                        SampleEncoding.S32
                     },
-                    "mp3": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
+                    ChannelEncoding.Mp3: {
+                        SampleEncoding.FltP,
+                        SampleEncoding.S16P,
+                        SampleEncoding.S32P
                     },
-                    "pcm_f32le": {
-                        "flt"
+                    ChannelEncoding.PcmF32Le: {
+                        SampleEncoding.Flt
                     },
-                    "pcm_s16le": {
-                        "s16"
+                    ChannelEncoding.PcmS16Le: {
+                        SampleEncoding.S16
                     },
-                    "pcm_s24le": {
-                        "s32"  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM, due to integer representation constraints in memory
+                    ChannelEncoding.PcmS24Le: {
+                        SampleEncoding.S32  # FFmpeg uses 32-bit samples (4 bytes) to represent 24-bit PCM
                     },
-                    "pcm_s32le": {
-                        "s32"
+                    ChannelEncoding.PcmS32Le: {
+                        SampleEncoding.S32
                     },
                 },
-                "Text": {
-                     "mov_text": {
-                        "u8"
+                ChannelModality.Text: {
+                    ChannelEncoding.MovText: {
+                        SampleEncoding.U8
                     }
                 },
-                "Video": {
-                    "h264": {
-                        "nv12",
-                        "nv16",
-                        "nv21",
-                        "yuv420p",
-                        "yuv422p",
-                        "yuv444p",
-                        "yuvj420p",
-                        "yuvj422p",
-                        "yuvj444p"
+                ChannelModality.Video: {
+                    ChannelEncoding.H264: {
+                        SampleEncoding.Nv12,
+                        SampleEncoding.Nv16,
+                        SampleEncoding.Nv21,
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv422P,
+                        SampleEncoding.Yuv444P,
+                        SampleEncoding.YuvJ420P,
+                        SampleEncoding.YuvJ422P,
+                        SampleEncoding.YuvJ444P
                     },
-                    "h265": {
-                        "gbrp",
-                        "gbrp10le",
-                        "gray",
-                        "gray10le",
-                        "yuv420p",
-                        "yuv420p10le",
-                        "yuv422p",
-                        "yuv422p10le",
-                        "yuv444p",
-                        "yuv444p10le"
+                    ChannelEncoding.H265: {
+                        SampleEncoding.GbrP,
+                        SampleEncoding.GbrP10Le,
+                        SampleEncoding.Gray,
+                        SampleEncoding.Gray10Le,
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv420P10Le,
+                        SampleEncoding.Yuv422P,
+                        SampleEncoding.Yuv422P10Le,
+                        SampleEncoding.Yuv444P,
+                        SampleEncoding.Yuv444P10Le
                     },
-                    "mjpeg": {
-                        "yuv420p",
-                        "yuv422p",
-                        "yuv444p",
-                        "yuvj420p",
-                        "yuvj422p",
-                        "yuvj444p"
+                    ChannelEncoding.Mjpeg: {
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv422P,
+                        SampleEncoding.Yuv444P,
+                        SampleEncoding.YuvJ420P,
+                        SampleEncoding.YuvJ422P,
+                        SampleEncoding.YuvJ444P
                     },
-                    "prores_ks": {
-                        "yuv422p10le",
-                        "yuv444p10le",
-                        "yuva444p10le"
+                    ChannelEncoding.ProresKs: {
+                        SampleEncoding.Yuv422P10Le,
+                        SampleEncoding.Yuv444P10Le,
+                        SampleEncoding.YuvA444P10Le
                     }
                 }
             },
-            "mp4": {
-                "Audio": {
-                    "aac": {
-                        "fltp"
+            ContainerEncoding.Mp4: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Aac: {
+                        SampleEncoding.FltP
                     },
-                    "alac": {
-                        "s16p",
-                        "s32p"
+                    ChannelEncoding.Alac: {
+                        SampleEncoding.S16P,
+                        SampleEncoding.S32P
                     },
-                    "mp3": {
-                        "fltp",
-                        "s16p",
-                        "s32p"
+                    ChannelEncoding.Mp3: {
+                        SampleEncoding.FltP,
+                        SampleEncoding.S16P,
+                        SampleEncoding.S32P
                     }
                 },
-                "Text": {
-                    "mov_text": {
-                        "u8"
+                ChannelModality.Text: {
+                    ChannelEncoding.MovText: {
+                        SampleEncoding.U8
                     }
                 },
-                "Video": {
-                    "av1": {
-                        "gbrp",
-                        "yuv420p",
-                        "yuv444p"
+                ChannelModality.Video: {
+                    ChannelEncoding.Av1: {
+                        SampleEncoding.GbrP,
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv444P
                     },
-                    "h264": {
-                        "yuv420p"
+                    ChannelEncoding.H264: {
+                        SampleEncoding.Yuv420P
                     },
-                    "h265": {
-                        "gbrp",
-                        "yuv420p",
-                        "yuv444p"
+                    ChannelEncoding.H265: {
+                        SampleEncoding.GbrP,
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.Yuv444P
                     }
                 }
             },
-            "webm": {
-                "Audio": {
-                    "opus": {
-                        "flt",
-                        "s16"
+            ContainerEncoding.WebM: {
+                ChannelModality.Audio: {
+                    ChannelEncoding.Opus: {
+                        SampleEncoding.Flt,
+                        SampleEncoding.S16
                     },
-                    "vorbis": {
-                        "fltp"
+                    ChannelEncoding.Vorbis: {
+                        SampleEncoding.FltP
                     }
                 },
-                "Text": {
-                    "vtt": {
-                        "u8"
+                ChannelModality.Text: {
+                    ChannelEncoding.Vtt: {
+                        SampleEncoding.U8
                     }
                 },
-                "Video": {
-                    "av1": {
-                        "yuv420p"
+                ChannelModality.Video: {
+                    ChannelEncoding.Av1: {
+                        SampleEncoding.Yuv420P
                     },
-                    "vp8": {
-                        "yuv420p",
-                        "yuva420p"
+                    ChannelEncoding.Vp8: {
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.YuvA420P
                     },
-                    "vp9": {
-                        "yuv420p",
-                        "yuva420p"
+                    ChannelEncoding.Vp9: {
+                        SampleEncoding.Yuv420P,
+                        SampleEncoding.YuvA420P
                     }
                 }
             }

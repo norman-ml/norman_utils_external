@@ -1,203 +1,211 @@
+from norman_objects.shared.encoding.channel_encoding import ChannelEncoding
+from norman_objects.shared.encoding.container_encoding import ContainerEncoding
+from norman_objects.shared.encoding.sample_encoding import SampleEncoding
+from norman_objects.shared.encoding.tensor_encoding import TensorEncoding
+from norman_objects.shared.modality.channel_modality import ChannelModality
+from norman_objects.shared.modality.container_modality import ContainerModality
+
+
 class EncodingDefaults:
     Container_Map = {
-        "Audio": "mp3",
-        "Image": "jpg",
-        "Text": "txt",
-        "Video": "mp4"
+        ContainerModality.Audio: ContainerEncoding.Mp3,
+        ContainerModality.Image: ContainerEncoding.Jpg,
+        ContainerModality.Text: ContainerEncoding.Txt,
+        ContainerModality.Video: ContainerEncoding.Mp4
     }
 
     Channel_Map = {
-        "Audio": {
-            "aac": {
-                "Audio": {
-                    "channel": "aac",
-                    "sample": "fltp",
-                    "tensor": "float32"
+        ContainerModality.Audio: {
+            ContainerEncoding.Aac: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Aac,
+                    "sample": SampleEncoding.FltP,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "flac": {
-                "Audio": {
-                    "channel": "flac",
-                    "sample": "s16",
-                    "tensor": "float32"
+            ContainerEncoding.Flac: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Flac,
+                    "sample": SampleEncoding.S16,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "mp3": {
-                "Audio": {
-                    "channel": "mp3",
-                    "sample": "fltp",
-                    "tensor": "float32"
+            ContainerEncoding.Mp3: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Mp3,
+                    "sample": SampleEncoding.FltP,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "ogg": {
-                "Audio": {
-                    "channel": "opus",
-                    "sample": "flt",
-                    "tensor": "float32"
+            ContainerEncoding.Ogg: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Opus,
+                    "sample": SampleEncoding.Flt,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "wav": {
-                "Audio": {
-                    "channel": "pcm_s16le",
-                    "sample": "s16",
-                    "tensor": "float32"
+            ContainerEncoding.Wav: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.PcmS16Le,
+                    "sample": SampleEncoding.S16,
+                    "tensor": TensorEncoding.Float32
                 }
             }
         },
-        "File": {
-            "bin": {
-                "File": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "float32"
+        ContainerModality.File: {
+            ContainerEncoding.Bin: {
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "pt": {
-                "File": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "float32"
+            ContainerEncoding.Pt: {
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "zip": {
-                "File": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "float32"
+            ContainerEncoding.Zip: {
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Float32
                 }
             }
         },
-        "Float": {
-            "txt": {
-                "Float": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "float32"
+        ContainerModality.Float: {
+            ContainerEncoding.Txt: {
+                ChannelModality.Float: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Float32
                 }
             }
         },
-        "Image": {
-            "jpg": {
-                "Image": {
-                    "channel": "rgb",
-                    "sample": "uint8",
-                    "tensor": "uint8"
+        ContainerModality.Image: {
+            ContainerEncoding.Jpg: {
+                ChannelModality.Image: {
+                    "channel": ChannelEncoding.Rgb,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Uint8
                 }
             },
-            "png": {
-                "Image": {
-                    "channel": "rgba",
-                    "sample": "uint8",
-                    "tensor": "uint8"
+            ContainerEncoding.Png: {
+                ChannelModality.Image: {
+                    "channel": ChannelEncoding.Rgba,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Uint8
                 }
             },
-            "webp": {
-                "Image": {
-                    "channel": "rgb",
-                    "sample": "uint8",
-                    "tensor": "uint8"
+            ContainerEncoding.WebP: {
+                ChannelModality.Image: {
+                    "channel": ChannelEncoding.Rgb,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Uint8
                 }
             }
         },
-        "Integer": {
-            "txt": {
-                "Integer": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "int32"
+        ContainerModality.Integer: {
+            ContainerEncoding.Txt: {
+                ChannelModality.Integer: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int32
                 }
             }
         },
-        "Text": {
-            "docx": {
-                "Text": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "int64"
+        ContainerModality.Text: {
+            ContainerEncoding.DocX: {
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 }
             },
-            "pdf": {
-                "Text": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "int64"
+            ContainerEncoding.Pdf: {
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 }
             },
-            "txt": {
-                "Text": {
-                    "channel": "utf8",
-                    "sample": "u8",
-                    "tensor": "int64"
+            ContainerEncoding.Txt: {
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Utf8,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 }
             }
         },
-        "Video": {
-            "mkv": {
-                "Audio": {
-                    "channel": "opus",
-                    "sample": "flt",
-                    "tensor": "float32"
+        ContainerModality.Video: {
+            ContainerEncoding.Mkv: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Opus,
+                    "sample": SampleEncoding.Flt,
+                    "tensor": TensorEncoding.Float32
                 },
-                "Text": {
-                    "channel": "srt",
-                    "sample": "utf8",
-                    "tensor": "int64"
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Srt,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 },
-                "Video": {
-                    "channel": "h264",
-                    "sample": "yuv420p",
-                    "tensor": "float32"
+                ChannelModality.Video: {
+                    "channel": ChannelEncoding.H264,
+                    "sample": SampleEncoding.Yuv420P,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "mov": {
-                "Audio": {
-                    "channel": "aac",
-                    "sample": "fltp",
-                    "tensor": "float32"
+            ContainerEncoding.Mov: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Aac,
+                    "sample": SampleEncoding.FltP,
+                    "tensor": TensorEncoding.Float32
                 },
-                "Text": {
-                    "channel": "mov_text",
-                    "sample": "utf8",
-                    "tensor": "int64"
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.MovText,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 },
-                "Video": {
-                    "channel": "h264",
-                    "sample": "yuv420p",
-                    "tensor": "float32"
+                ChannelModality.Video: {
+                    "channel": ChannelEncoding.H264,
+                    "sample": SampleEncoding.Yuv420P,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "mp4": {
-                "Audio": {
-                    "channel": "aac",
-                    "sample": "fltp",
-                    "tensor": "float32"
+            ContainerEncoding.Mp4: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Aac,
+                    "sample": SampleEncoding.FltP,
+                    "tensor": TensorEncoding.Float32
                 },
-                "Text": {
-                    "channel": "mov_text",
-                    "sample": "utf8",
-                    "tensor": "int64"
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.MovText,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 },
-                "Video": {
-                    "channel": "h264",
-                    "sample": "yuv420p",
-                    "tensor": "float32"
+                ChannelModality.Video: {
+                    "channel": ChannelEncoding.H264,
+                    "sample": SampleEncoding.Yuv420P,
+                    "tensor": TensorEncoding.Float32
                 }
             },
-            "webm": {
-                "Audio": {
-                    "channel": "opus",
-                    "sample": "flt",
-                    "tensor": "float32"
+            ContainerEncoding.WebM: {
+                ChannelModality.Audio: {
+                    "channel": ChannelEncoding.Opus,
+                    "sample": SampleEncoding.Flt,
+                    "tensor": TensorEncoding.Float32
                 },
-                "Text": {
-                    "channel": "vtt",
-                    "sample": "utf8",
-                    "tensor": "int64"
+                ChannelModality.Text: {
+                    "channel": ChannelEncoding.Vtt,
+                    "sample": SampleEncoding.U8,
+                    "tensor": TensorEncoding.Int64
                 },
-                "Video": {
-                    "channel": "vp9",
-                    "sample": "yuv420p",
-                    "tensor": "float32"
+                ChannelModality.Video: {
+                    "channel": ChannelEncoding.Vp9,
+                    "sample": SampleEncoding.Yuv420P,
+                    "tensor": TensorEncoding.Float32
                 }
             }
         }

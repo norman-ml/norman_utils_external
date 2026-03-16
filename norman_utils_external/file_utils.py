@@ -2,6 +2,9 @@ import io
 import os
 from typing import Final
 
+from norman_objects.shared.encoding.container_encoding import ContainerEncoding
+from norman_objects.shared.modality.container_modality import ContainerModality
+
 from norman_utils_external.singleton import Singleton
 
 
@@ -27,9 +30,10 @@ class FileUtils(metaclass=Singleton):
                 # for unmarked UTF-8 files and formats lacking clear headers
         except IOError as e:
             return {
-                "container_modality": "File",
-                "container_encoding": "bin",
-                "mime-type": "application/octet-stream", # HTTP relies on a mime-type header for content type resolving.
+                "container_modality": ContainerModality.File,
+                "container_encoding": ContainerEncoding.Bin,
+                "mime-type": "application/octet-stream",
+                # HTTP relies on a mime-type header for content type resolving.
                 "Content-Type": "application/octet-stream"  # S3 relies on Content-Type for proper file handling.
             }
 
@@ -40,58 +44,58 @@ class FileUtils(metaclass=Singleton):
 
         # Audio (alphabetical: aac, ac3, flac, mp3, ogg, wav)
         if hex_header.startswith("fff1") or hex_header.startswith("fff9"):  # aac
-            container_modality, container_encoding, mime_type = "Audio", "aac", "audio/aac"
-        elif hex_header.startswith("0b77"):  # ac3 sync word
-            container_modality, container_encoding, mime_type = "Audio", "ac3", "audio/ac3"
+            container_modality, container_encoding, mime_type = ContainerModality.Audio, ContainerEncoding.Aac, "audio/aac"
+        # elif hex_header.startswith("0b77"):  # ac3 sync word
+        #     container_modality, container_encoding, mime_type = ContainerModality.Audio, "ac3", "audio/ac3"
         elif hex_header.startswith("664c6143"):  # flac - "fLaC"
-            container_modality, container_encoding, mime_type = "Audio", "flac", "audio/flac"
+            container_modality, container_encoding, mime_type = ContainerModality.Audio, ContainerEncoding.Flac, "audio/flac"
         elif hex_header.startswith("494433"):  # mp3 - ID3 tag
-            container_modality, container_encoding, mime_type = "Audio", "mp3", "audio/mpeg"
+            container_modality, container_encoding, mime_type = ContainerModality.Audio, ContainerEncoding.Mp3, "audio/mpeg"
         elif hex_header.startswith("4f676753") and "4f70757348656164" in hex_header:  # opus - OggS + OpusHead
-            container_modality, container_encoding, mime_type = "Audio", "ogg", "audio/opus"
+            container_modality, container_encoding, mime_type = ContainerModality.Audio, ContainerEncoding.Ogg, "audio/opus"
         elif hex_header.startswith("4f676753") and "01766f72626973" in hex_header:  # vorbis - OggS + \x01vorbis
-            container_modality, container_encoding, mime_type = "Audio", "ogg", "audio/vorbis"
+            container_modality, container_encoding, mime_type = ContainerModality.Audio, ContainerEncoding.Ogg, "audio/vorbis"
         elif hex_header.startswith("52494646") and "57415645" in hex_header:  # wav - RIFF + WAVE
-            container_modality, container_encoding, mime_type = "Audio", "wav", "audio/wav"
+            container_modality, container_encoding, mime_type = ContainerModality.Audio, ContainerEncoding.Wav, "audio/wav"
 
         # Image (alphabetical: jpg, png, webp)
         elif hex_header.startswith("ffd8ff"):  # jpg
-            container_modality, container_encoding, mime_type = "Image", "jpg", "image/jpeg"
+            container_modality, container_encoding, mime_type = ContainerModality.Image, ContainerEncoding.Jpg, "image/jpeg"
         elif hex_header.startswith("89504e47"):  # png
-            container_modality, container_encoding, mime_type = "Image", "png", "image/png"
+            container_modality, container_encoding, mime_type = ContainerModality.Image, ContainerEncoding.Png, "image/png"
         elif hex_header.startswith("52494646") and "57454250" in hex_header:  # webp - RIFF + WEBP
-            container_modality, container_encoding, mime_type = "Image", "webp", "image/webp"
+            container_modality, container_encoding, mime_type = ContainerModality.Image, ContainerEncoding.WebP, "image/webp"
 
         # Video (alphabetical: avi, mkv, mov, mp4, ogg, webm)
-        elif hex_header.startswith("52494646") and "41564920" in hex_header:  # avi - RIFF + AVI
-            container_modality, container_encoding, mime_type = "Video", "avi", "video/x-msvideo"
+        # elif hex_header.startswith("52494646") and "41564920" in hex_header:  # avi - RIFF + AVI
+        #     container_modality, container_encoding, mime_type = ContainerModality.Video, "avi", "video/x-msvideo"
         elif hex_header.startswith("1a45dfa3") and "7765626d" not in hex_header:  # matroska - EBML without webm doctype
-            container_modality, container_encoding, mime_type = "Video", "mkv", "video/x-matroska"
+            container_modality, container_encoding, mime_type = ContainerModality.Video, ContainerEncoding.Mkv, "video/x-matroska"
         elif hex_header.startswith("000000") and "6674797071742020" in hex_header:  # mov - ftyp qt (QuickTime)
-            container_modality, container_encoding, mime_type = "Video", "mov", "video/quicktime"
+            container_modality, container_encoding, mime_type = ContainerModality.Video, ContainerEncoding.Mov, "video/quicktime"
         elif hex_header.startswith("000000") and "66747970" in hex_header:  # mp4 - ftyp (mp4 and variants)
-            container_modality, container_encoding, mime_type = "Video", "mp4", "video/mp4"
+            container_modality, container_encoding, mime_type = ContainerModality.Video, ContainerEncoding.Mp4, "video/mp4"
         elif hex_header.startswith("4f676753"):  # ogg - OggS (generic, no vorbis/opus detected)
-            container_modality, container_encoding, mime_type = "Video", "ogg", "video/ogg"
+            container_modality, container_encoding, mime_type = ContainerModality.Video, ContainerEncoding.Ogg, "video/ogg"
         elif hex_header.startswith("1a45dfa3") and "7765626d" in hex_header:  # webm - EBML + webm doctype
-            container_modality, container_encoding, mime_type = "Video", "webm", "video/webm"
+            container_modality, container_encoding, mime_type = ContainerModality.Video, ContainerEncoding.WebM, "video/webm"
 
         # File (zip-based formats: jit, pt, zip - all return bin)
         elif hex_header.startswith("504b0304"):  # `.pt` files have a zip header
-            container_modality, container_encoding, mime_type = "File", "zip", "application/octet-stream"
+            container_modality, container_encoding, mime_type = ContainerModality.File, ContainerEncoding.Zip, "application/octet-stream"
 
         # Text (must be last - uses fallback decode detection)
         elif self.__is_utf16(header):
-            container_modality, container_encoding, mime_type = "Text", "txt", "text/plain"
+            container_modality, container_encoding, mime_type = ContainerModality.Text, ContainerEncoding.Txt, "text/plain"
         elif self.__is_utf8(header):
-            container_modality, container_encoding, mime_type = "Text", "txt", "text/plain"
+            container_modality, container_encoding, mime_type = ContainerModality.Text, ContainerEncoding.Txt, "text/plain"
         else:
-            container_modality, container_encoding, mime_type = "File", "bin", "application/octet-stream"
+            container_modality, container_encoding, mime_type = ContainerModality.File, ContainerEncoding.Bin, "application/octet-stream"
 
         return {
             "container_modality": container_modality,
             "container_encoding": container_encoding,
-            "mime-type": mime_type, # HTTP relies on a mime-type header for content type resolving.
+            "mime-type": mime_type,  # HTTP relies on a mime-type header for content type resolving.
             "Content-Type": mime_type  # S3 relies on Content-Type for proper file handling.
         }
 

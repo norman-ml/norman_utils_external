@@ -1,173 +1,171 @@
 # As there are multiple encoders for each canonical encoding name
 # We chose the best implementation we could find within reasonable research time
+from norman_objects.shared.codecs.channel_codec import ChannelCodec
+from norman_objects.shared.codecs.container_codec import ContainerCodec
+from norman_objects.shared.encoding.channel_encoding import ChannelEncoding
+from norman_objects.shared.encoding.container_encoding import ContainerEncoding
+
+
 class CodecMapping:
-    # Key = Norman encoding value
-    # Value = Library codec name
+
     Container_Encoders = {
         # Audio (PyAV formats)
-        "aac": "adts",
-        "flac": "flac",
-        "mp3": "mp3",
-        "ogg": "ogg",
-        "wav": "wav",
-        
+        ContainerEncoding.Aac: ContainerCodec.Adts,
+        ContainerEncoding.Flac: ContainerCodec.Flac,
+        ContainerEncoding.Mp3: ContainerCodec.Mp3,
+        ContainerEncoding.Ogg: ContainerCodec.Ogg,
+        ContainerEncoding.Wav: ContainerCodec.Wav,
+
         # Image (Pillow formats)
-        "jpg": "jpeg",
-        "png": "png",
-        "webp": "webp",
+        ContainerEncoding.Jpg: ContainerCodec.Jpeg,
+        ContainerEncoding.Png: ContainerCodec.Png,
+        ContainerEncoding.WebP: ContainerCodec.WebP,
 
         # Video (PyAV formats)
-        "mkv": "matroska",
-        "mov": "mov",
-        "mp4": "mp4",
-        "webm": "webm"
+        ContainerEncoding.Mkv: ContainerCodec.Matroska,
+        ContainerEncoding.Mov: ContainerCodec.Mov,
+        ContainerEncoding.Mp4: ContainerCodec.Mp4,
+        ContainerEncoding.WebM: ContainerCodec.WebM
     }
 
-    # Key = Library codec name
-    # Value = Norman encoding value
     Container_Decoders = {
         # Audio (PyAV formats)
-        "aac": "aac",
-        "adts": "aac",
-        "flac": "flac",
-        "mp3": "mp3",
-        "ogg": "ogg",
-        "wav": "wav",
+        ContainerCodec.Aac: ContainerEncoding.Aac,
+        ContainerCodec.Adts: ContainerEncoding.Aac,
+        ContainerCodec.Flac: ContainerEncoding.Flac,
+        ContainerCodec.Mp3: ContainerEncoding.Mp3,
+        ContainerCodec.Ogg: ContainerEncoding.Ogg,
+        ContainerCodec.Wav: ContainerEncoding.Wav,
 
         # Image (Pillow formats)
-        "jpeg": "jpg",
-        "png": "png",
-        "webp": "webp",
+        ContainerCodec.Jpeg: ContainerEncoding.Jpg,
+        ContainerCodec.Png: ContainerEncoding.Png,
+        ContainerCodec.WebP: ContainerEncoding.WebP,
 
         # Video (PyAV formats)
-        "matroska": "mkv",
-        "matroska,webm": "mkv",
-        "mov": "mov",
-        "mov,mp4,m4a,3gp,3g2,mj2": "mp4",
-        "mp4": "mp4",
-        "webm": "webm"
+        ContainerCodec.Matroska: ContainerEncoding.Mkv,
+        ContainerCodec.MatroskaWebm: ContainerEncoding.Mkv,
+        ContainerCodec.Mov: ContainerEncoding.Mov,
+        ContainerCodec.MovMp4M4a3gp3g2Mj2: ContainerEncoding.Mp4,
+        ContainerCodec.Mp4: ContainerEncoding.Mp4,
+        ContainerCodec.WebM: ContainerEncoding.WebM
     }
 
-    # Key = Norman encoding value
-    # Value = Library codec name
     Channel_Encoders = {
         # Audio (PyAV codecs)
-        "aac": "aac",
-        "alac": "alac",
-        "flac": "flac",
-        "mp3": "libmp3lame",
-        "mp3_vbr": "libmp3lame",
-        "opus": "libopus",
-        "pcm_f32le": "pcm_f32le",
-        "pcm_s16le": "pcm_s16le",
-        "pcm_s24le": "pcm_s24le",
-        "pcm_s32le": "pcm_s32le",
-        "vorbis": "libvorbis",
+        ChannelEncoding.Aac: ChannelCodec.Aac,
+        ChannelEncoding.Alac: ChannelCodec.Alac,
+        ChannelEncoding.Flac: ChannelCodec.Flac,
+        ChannelEncoding.Mp3: ChannelCodec.LibMp3Lame,
+        ChannelEncoding.Mp3Vbr: ChannelCodec.LibMp3Lame,
+        ChannelEncoding.Opus: ChannelCodec.LibOpus,
+        ChannelEncoding.PcmF32Le: ChannelCodec.PcmF32Le,
+        ChannelEncoding.PcmS16Le: ChannelCodec.PcmS16Le,
+        ChannelEncoding.PcmS24Le: ChannelCodec.PcmS24Le,
+        ChannelEncoding.PcmS32Le: ChannelCodec.PcmS32Le,
+        ChannelEncoding.Vorbis: ChannelCodec.LibVorbis,
 
         # Image (Pillow modes)
-        "1": "1",
-        "cmyk": "CMYK",
-        "l": "L",
-        "p": "P",
-        "rgb": "RGB",
-        "rgba": "RGBA",
-        "ycbcr": "YCbCr",
+        ChannelEncoding.One: ChannelCodec.One,
+        ChannelEncoding.Cmyk: ChannelCodec.Cmyk,
+        ChannelEncoding.L: ChannelCodec.L,
+        ChannelEncoding.P: ChannelCodec.P,
+        ChannelEncoding.Rgb: ChannelCodec.Rgb,
+        ChannelEncoding.Rgba: ChannelCodec.Rgba,
+        ChannelEncoding.YCbCr: ChannelCodec.YCbCr,
 
         # Text / Subtitle (PyAV codecs)
-        "ass": "ass",
-        "mov_text": "mov_text",
-        "srt": "subrip",
-        "vtt": "webvtt",
+        ChannelEncoding.Ass: ChannelCodec.Ass,
+        ChannelEncoding.MovText: ChannelCodec.MovText,
+        ChannelEncoding.Srt: ChannelCodec.Subrip,
+        ChannelEncoding.Vtt: ChannelCodec.Webvtt,
         # "kate": "???" # TODO: build ffmpeg on vm with kate codecs and rebundle ami to enable support
 
         # Video (PyAV codecs)
-        "av1": "libaom-av1",
-        "ffv1": "ffv1",
-        "h264": "libx264",
-        "h265": "libx265",
-        "mjpeg": "mjpeg",
-        "prores_ks": "prores_ks",
-        "theora": "theora",  # Note: encoder not available in your build, only decoder
-        "vp8": "libvpx",
-        "vp9": "libvpx-vp9"
+        ChannelEncoding.Av1: ChannelCodec.LibaomAv1,
+        ChannelEncoding.Ffv1: ChannelCodec.Ffv1,
+        ChannelEncoding.H264: ChannelCodec.Libx264,
+        ChannelEncoding.H265: ChannelCodec.Libx265,
+        ChannelEncoding.Mjpeg: ChannelCodec.Mjpeg,
+        ChannelEncoding.ProresKs: ChannelCodec.ProresKs,
+        ChannelEncoding.Vp8: ChannelCodec.Libvpx,
+        ChannelEncoding.Vp9: ChannelCodec.LibvpxVp9
     }
 
-    # Key = Library codec name
-    # Value = Norman encoding value
     Channel_Decoders = {
         # Audio (PyAV codecs)
-        "aac": "aac",
-        "aac_fixed": "aac",
-        "aac_latm": "aac",
-        "alac": "alac",
-        "flac": "flac",
-        "mp3": "mp3",
-        "mp3adu": "mp3",
-        "mp3adufloat": "mp3",
-        "mp3float": "mp3",
-        "mp3on4": "mp3",
-        "mp3on4float": "mp3",
-        "libopus": "opus",
-        "opus": "opus",
-        "pcm_f32be": "pcm_f32le",
-        "pcm_f32le": "pcm_f32le",
-        "pcm_s16be": "pcm_s16le",
-        "pcm_s16be_planar": "pcm_s16le",
-        "pcm_s16le": "pcm_s16le",
-        "pcm_s16le_planar": "pcm_s16le",
-        "pcm_s24be": "pcm_s24le",
-        "pcm_s24le": "pcm_s24le",
-        "pcm_s24le_planar": "pcm_s24le",
-        "pcm_s32be": "pcm_s32le",
-        "pcm_s32le": "pcm_s32le",
-        "pcm_s32le_planar": "pcm_s32le",
-        "libvorbis": "vorbis",
-        "vorbis": "vorbis",
+        ChannelCodec.Aac: ChannelEncoding.Aac,
+        ChannelCodec.AacFixed: ChannelEncoding.Aac,
+        ChannelCodec.AacLatm: ChannelEncoding.Aac,
+        ChannelCodec.Alac: ChannelEncoding.Alac,
+        ChannelCodec.Flac: ChannelEncoding.Flac,
+        ChannelCodec.Mp3: ChannelEncoding.Mp3,
+        ChannelCodec.Mp3Adu: ChannelEncoding.Mp3,
+        ChannelCodec.Mp3AduFloat: ChannelEncoding.Mp3,
+        ChannelCodec.Mp3Float: ChannelEncoding.Mp3,
+        ChannelCodec.Mp3On4: ChannelEncoding.Mp3,
+        ChannelCodec.Mp3On4Float: ChannelEncoding.Mp3,
+        ChannelCodec.LibOpus: ChannelEncoding.Opus,
+        ChannelCodec.Opus: ChannelEncoding.Opus,
+        ChannelCodec.PcmF32Be: ChannelEncoding.PcmF32Le,
+        ChannelCodec.PcmF32Le: ChannelEncoding.PcmF32Le,
+        ChannelCodec.PcmS16Be: ChannelEncoding.PcmS16Le,
+        ChannelCodec.PcmS16BePlanar: ChannelEncoding.PcmS16Le,
+        ChannelCodec.PcmS16Le: ChannelEncoding.PcmS16Le,
+        ChannelCodec.PcmS16LePlanar: ChannelEncoding.PcmS16Le,
+        ChannelCodec.PcmS24Be: ChannelEncoding.PcmS24Le,
+        ChannelCodec.PcmS24Le: ChannelEncoding.PcmS24Le,
+        ChannelCodec.PcmS24LePlanar: ChannelEncoding.PcmS24Le,
+        ChannelCodec.PcmS32Be: ChannelEncoding.PcmS32Le,
+        ChannelCodec.PcmS32Le: ChannelEncoding.PcmS32Le,
+        ChannelCodec.PcmS32LePlanar: ChannelEncoding.PcmS32Le,
+        ChannelCodec.LibVorbis: ChannelEncoding.Vorbis,
+        ChannelCodec.Vorbis: ChannelEncoding.Vorbis,
 
         # Image (Pillow modes)
-        "1": "1",
-        "CMYK": "cmyk",
-        "L": "l",
-        "P": "p",
-        "RGB": "rgb",
-        "RGBA": "rgba",
-        "YCbCr": "ycbcr",
+        ChannelCodec.One: ChannelEncoding.One,
+        ChannelCodec.Cmyk: ChannelEncoding.Cmyk,
+        ChannelCodec.L: ChannelEncoding.L,
+        ChannelCodec.P: ChannelEncoding.P,
+        ChannelCodec.Rgb: ChannelEncoding.Rgb,
+        ChannelCodec.Rgba: ChannelEncoding.Rgba,
+        ChannelCodec.YCbCr: ChannelEncoding.YCbCr,
 
         # Text / Subtitle (PyAV codecs)
-        "ass": "ass",
-        "ssa": "ass",
-        "mov_text": "mov_text",
-        "srt": "srt",
-        "subrip": "srt",
-        "webvtt": "vtt",
+        ChannelCodec.Ass: ChannelEncoding.Ass,
+        ChannelCodec.Ssa: ChannelEncoding.Ass,
+        ChannelCodec.MovText: ChannelEncoding.MovText,
+        ChannelCodec.Srt: ChannelEncoding.Srt,
+        ChannelCodec.Subrip: ChannelEncoding.Srt,
+        ChannelCodec.Webvtt: ChannelEncoding.Vtt,
 
         # Video (PyAV codecs)
-        "av1": "av1",
-        "av1_cuvid": "av1",
-        "libaom-av1": "av1",
-        "libdav1d": "av1",
-        "ffv1": "ffv1",
-        "h264": "h264",
-        "h264_cuvid": "h264",
-        "h264_v4l2m2m": "h264",
-        "libopenh264": "h264",
-        "hevc": "h265",
-        "hevc_cuvid": "h265",
-        "hevc_v4l2m2m": "h265",
-        "mjpeg": "mjpeg",
-        "mjpegb": "mjpeg",
-        "mjpeg_cuvid": "mjpeg",
-        "prores": "prores_ks",
-        "prores_aw": "prores_ks",
-        "prores_ks": "prores_ks",
-        "prores_raw": "prores_ks",
-        "theora": "theora",
-        "libvpx": "vp8",
-        "vp8": "vp8",
-        "vp8_cuvid": "vp8",
-        "vp8_v4l2m2m": "vp8",
-        "libvpx-vp9": "vp9",
-        "vp9": "vp9",
-        "vp9_cuvid": "vp9",
-        "vp9_v4l2m2m": "vp9"
+        ChannelCodec.Av1: ChannelEncoding.Av1,
+        ChannelCodec.Av1Cuvid: ChannelEncoding.Av1,
+        ChannelCodec.LibaomAv1: ChannelEncoding.Av1,
+        ChannelCodec.LibDav1d: ChannelEncoding.Av1,
+        ChannelCodec.Ffv1: ChannelEncoding.Ffv1,
+        ChannelCodec.H264: ChannelEncoding.H264,
+        ChannelCodec.H264Cuvid: ChannelEncoding.H264,
+        ChannelCodec.H264V4l2m2m: ChannelEncoding.H264,
+        ChannelCodec.LibOpenH264: ChannelEncoding.H264,
+        ChannelCodec.Hevc: ChannelEncoding.H265,
+        ChannelCodec.HevcCuvid: ChannelEncoding.H265,
+        ChannelCodec.HevcV4l2m2m: ChannelEncoding.H265,
+        ChannelCodec.Mjpeg: ChannelEncoding.Mjpeg,
+        ChannelCodec.MjpegB: ChannelEncoding.Mjpeg,
+        ChannelCodec.MjpegCuvid: ChannelEncoding.Mjpeg,
+        ChannelCodec.Prores: ChannelEncoding.ProresKs,
+        ChannelCodec.ProresAw: ChannelEncoding.ProresKs,
+        ChannelCodec.ProresKs: ChannelEncoding.ProresKs,
+        ChannelCodec.ProresRaw: ChannelEncoding.ProresKs,
+        ChannelCodec.Theora: ChannelEncoding.Vp8,
+        ChannelCodec.Libvpx: ChannelEncoding.Vp8,
+        ChannelCodec.Vp8: ChannelEncoding.Vp8,
+        ChannelCodec.Vp8Cuvid: ChannelEncoding.Vp8,
+        ChannelCodec.Vp8V4l2m2m: ChannelEncoding.Vp8,
+        ChannelCodec.LibvpxVp9: ChannelEncoding.Vp9,
+        ChannelCodec.Vp9: ChannelEncoding.Vp9,
+        ChannelCodec.Vp9Cuvid: ChannelEncoding.Vp9,
+        ChannelCodec.Vp9V4l2m2m: ChannelEncoding.Vp9
     }
