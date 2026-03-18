@@ -1,7 +1,7 @@
 from datetime import datetime
 from enum import Enum
 
-from norman_utils_external.date_utils import DateUtils
+from norman_utils.date_utils import DateUtils
 
 
 class JsonPreSerializer:

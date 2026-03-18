@@ -3,7 +3,7 @@ requires = ["flit_core==3.12.0"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "norman-utils-external"
+name = "norman-utils"
 description = "norman utils common classes"
 version = "0.0.1"
 authors = [
@@ -13,8 +13,22 @@ authors = [
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
 dependencies = [
-    "cryptography==45.0.7"
+    "norman-exceptions",
+    "norman-objects",
+
+    "cryptography==46.0.5"
+]
+
+[project.optional-dependencies]
+dev = [
+    # Intentional boilerplate (for build scripts)
 ]
 
 [tool.flit.module]
-name = "norman_utils_external"
+name = "norman_utils"
+
+[tool.uv]
+override-dependencies = [
+    "norman-exceptions @ git+https://github.com/norman-ml/norman_exceptions.git@main",
+    "norman-objects @ git+https://github.com/norman-ml/norman_objects.git@main"
+]
