@@ -3,7 +3,7 @@ requires = ["flit_core==3.12.0"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "norman-utils-external"
+name = "norman-utils"
 description = "norman utils common classes"
 version = "0.0.1"
 authors = [
@@ -25,7 +25,7 @@ dev = [
 ]
 
 [tool.flit.module]
-name = "norman_utils_external"
+name = "norman_utils"
 
 [tool.uv]
 override-dependencies = [

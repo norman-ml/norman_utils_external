@@ -6,7 +6,7 @@ from norman_objects.shared.encoding.container_encoding import ContainerEncoding
 from norman_objects.shared.modality.container_modality import ContainerModality
 from norman_objects.shared.representation.file_representation import FileRepresentation
 
-from norman_utils_external.singleton import Singleton
+from norman_utils.singleton import Singleton
 
 
 class FileUtils(metaclass=Singleton):

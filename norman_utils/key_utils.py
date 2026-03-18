@@ -6,7 +6,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPublicNumbers
 
-from norman_utils_external.encoding_utils import EncodingUtils
+from norman_utils.encoding_utils import EncodingUtils
 
 
 class KeyUtils:

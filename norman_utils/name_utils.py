@@ -2,7 +2,7 @@ import base64
 import random
 import uuid
 
-from norman_utils_external.singleton import Singleton
+from norman_utils.singleton import Singleton
 
 
 class NameUtils(metaclass=Singleton):
