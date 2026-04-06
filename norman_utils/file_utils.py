@@ -2,6 +2,7 @@ import io
 import os
 from typing import Final
 
+from norman_objects.shared.encoding.channel_encoding import ChannelEncoding
 from norman_objects.shared.encoding.container_encoding import ContainerEncoding
 from norman_objects.shared.modality.container_modality import ContainerModality
 from norman_objects.shared.representation.file_representation import FileRepresentation
@@ -186,9 +187,9 @@ class FileUtils(metaclass=Singleton):
 
     def get_text_channel_encoding_from_header(self, header: bytes):
         if self.__is_utf16(header):
-            return "utf16"
+            return ChannelEncoding.Utf16
         elif self.__is_utf8(header):
-            return "utf8"
+            return ChannelEncoding.Utf8
         else:
             raise ValueError("Could not determine text channel encoding from file path")
 
@@ -200,7 +201,8 @@ class FileUtils(metaclass=Singleton):
 
         # Try to decode as UTF-16 (with BOM detection)
         try:
-            header.decode("utf16")
+            encoding_name = ChannelEncoding.Utf16.value.lower()
+            header.decode(encoding_name)
             return True
         except Exception as e:
             return False
@@ -212,7 +214,8 @@ class FileUtils(metaclass=Singleton):
 
         # Try to decode as UTF-8
         try:
-            header.decode("utf8")
+            encoding_name = ChannelEncoding.Utf8.value.lower()
+            header.decode(encoding_name)
             return True
         except Exception as e:
             return False
