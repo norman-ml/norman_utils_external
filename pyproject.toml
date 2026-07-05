@@ -12,7 +12,7 @@ authors = [
     {name = "Norman Artificial Intelligence LTD", email = "contact@norman-ai.com"},
 ]
 
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "norman-exceptions",
     "norman-objects",
@@ -22,7 +22,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    # Intentional boilerplate (for build scripts)
+    "pip==26.1.2" # Not needed, but used by some IDEs for package detection.
 ]
 
 [tool.flit.module]
